@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1B3A6B] text-gray-300">
+    <footer className="bg-[#0E3D2E] text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -12,7 +12,7 @@ export default function Footer() {
               <Image src="/apec-logo.png" alt="APEC Logo" width={48} height={48} className="rounded-full" />
               <div>
                 <p className="text-white font-bold text-lg">APEC Canada</p>
-                <p className="text-[#C9A227] text-xs">Association of Pakistani Engineers in Canada</p>
+                <p className="text-[#C8A24B] text-xs">Association of Pakistani Engineers in Canada</p>
               </div>
             </div>
             <p className="text-sm leading-relaxed max-w-sm">
@@ -26,7 +26,7 @@ export default function Footer() {
                 href="https://www.facebook.com/groups/781259795220477/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#C9A227] hover:text-yellow-300 transition-colors text-sm font-medium"
+                className="text-[#C8A24B] hover:text-[#d4aa5a] transition-colors text-sm font-medium"
               >
                 Facebook Group →
               </a>
@@ -46,7 +46,7 @@ export default function Footer() {
                 { label: "Contact", href: "/contact" },
               ].map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="hover:text-[#C9A227] transition-colors">
+                  <Link href={l.href} className="hover:text-[#C8A24B] transition-colors">
                     {l.label}
                   </Link>
                 </li>
@@ -60,17 +60,17 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>Calgary, Alberta, Canada</li>
               <li>
-                <a href="mailto:info@apecanada.ca" className="hover:text-[#C9A227] transition-colors">
+                <a href="mailto:info@apecanada.ca" className="hover:text-[#C8A24B] transition-colors">
                   info@apecanada.ca
                 </a>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-[#C9A227] transition-colors">
+                <Link href="/privacy" className="hover:text-[#C8A24B] transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-[#C9A227] transition-colors">
+                <Link href="/terms" className="hover:text-[#C8A24B] transition-colors">
                   Terms of Service
                 </Link>
               </li>
@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/10 text-center text-xs text-gray-400">
+        <div className="mt-8 pt-6 border-t border-[#C8A24B]/20 text-center text-xs text-gray-400">
           © {new Date().getFullYear()} Association of Pakistani Engineers in Canada (APEC). All rights reserved.
           <br className="sm:hidden" />
           <span className="sm:ml-2">Head Office: Calgary, Alberta, Canada</span>

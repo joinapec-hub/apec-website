@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -17,10 +17,17 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 bg-[#1B3A6B] shadow-lg">
+    <header className={`sticky top-0 z-50 bg-[#0E3D2E] transition-shadow ${scrolled ? "shadow-lg" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo + Name */}
@@ -37,7 +44,7 @@ export default function Navbar() {
               <span className="block text-white font-bold text-sm sm:text-base tracking-wide">
                 APEC Canada
               </span>
-              <span className="block text-[#C9A227] text-xs hidden sm:block">
+              <span className="block text-[#C8A24B] text-xs hidden sm:block">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
@@ -51,7 +58,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? "bg-[#C9A227] text-[#1B3A6B]"
+                    ? "bg-[#C8A24B] text-[#0E3D2E]"
                     : "text-gray-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -60,7 +67,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/membership"
-              className="ml-3 px-4 py-2 bg-[#C9A227] text-[#1B3A6B] font-bold rounded-md text-sm hover:bg-yellow-400 transition-colors"
+              className="ml-3 px-4 py-2 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-md text-sm hover:bg-[#d4aa5a] transition-colors"
             >
               Join Now
             </Link>
@@ -85,7 +92,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#152e56] border-t border-white/10 px-4 pb-4">
+        <div className="md:hidden bg-[#15604A] border-t border-white/10 px-4 pb-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -93,7 +100,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={`block px-3 py-2 mt-1 rounded-md text-sm font-medium ${
                 pathname === link.href
-                  ? "bg-[#C9A227] text-[#1B3A6B]"
+                  ? "bg-[#C8A24B] text-[#0E3D2E]"
                   : "text-gray-200 hover:bg-white/10"
               }`}
             >
@@ -103,7 +110,7 @@ export default function Navbar() {
           <Link
             href="/membership"
             onClick={() => setOpen(false)}
-            className="block mt-3 px-4 py-2 bg-[#C9A227] text-[#1B3A6B] font-bold rounded-md text-sm text-center"
+            className="block mt-3 px-4 py-2 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-md text-sm text-center"
           >
             Join Now
           </Link>

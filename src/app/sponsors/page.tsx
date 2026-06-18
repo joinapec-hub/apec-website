@@ -11,8 +11,8 @@ const currentSponsors = [
     email: "2189@fastsigns.com",
     website: "https://www.fastsigns.com",
     desc: "FastSigns Downtown Calgary is our proud website sponsor. They provide high-quality signage, banners, and visual communications solutions for businesses across Calgary. Their expertise and community support make a real difference for organizations like APEC.",
-    color: "border-[#C9A227] bg-[#C9A227]/5",
-    badgeColor: "bg-[#C9A227] text-[#1B3A6B]",
+    color: "border-[#C8A24B] bg-[#C8A24B]/5",
+    badgeColor: "bg-[#C8A24B] text-[#0E3D2E]",
   },
 ];
 
@@ -23,11 +23,52 @@ const tiers = [
   { name: "Community", price: "$500/yr", perks: ["Website mention", "Certificate of appreciation"] },
 ];
 
+function PersonIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block mr-1 -mt-0.5 text-[#15604A]">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+    </svg>
+  );
+}
+
+function MapPinIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block mr-1 -mt-0.5 text-[#15604A]">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block mr-1 -mt-0.5 text-[#15604A]">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+    </svg>
+  );
+}
+
+function EnvelopeIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block mr-1 -mt-0.5 text-[#15604A]">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 flex-shrink-0 text-[#C8A24B]">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.5 12.75l6 6 9-13.5" />
+    </svg>
+  );
+}
+
 export default function SponsorsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-24 bg-[#1B3A6B]">
+      <section className="py-24 bg-[#0E3D2E]">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Our Sponsors</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -39,29 +80,29 @@ export default function SponsorsPage() {
       {/* Current Sponsors */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#1B3A6B] mb-8 text-center">Current Sponsors</h2>
+          <h2 className="text-2xl font-bold text-[#15604A] mb-8 text-center">Current Sponsors</h2>
           {currentSponsors.map((sponsor) => (
             <div key={sponsor.name} className={`border-2 ${sponsor.color} rounded-2xl p-8`}>
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <div>
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${sponsor.badgeColor} mb-3`}>{sponsor.tier}</span>
-                  <h3 className="text-2xl font-bold text-[#1B3A6B]">{sponsor.name}</h3>
-                  <p className="text-[#C9A227] font-semibold">{sponsor.tagline}</p>
+                  <h3 className="text-2xl font-bold text-[#15604A]">{sponsor.name}</h3>
+                  <p className="text-[#C8A24B] font-semibold">{sponsor.tagline}</p>
                 </div>
               </div>
-              <p className="text-gray-600 leading-relaxed mb-6">{sponsor.desc}</p>
+              <p className="text-[#4a5a52] leading-relaxed mb-6">{sponsor.desc}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="space-y-2 text-gray-600">
-                  <p>👤 <strong>Contact:</strong> {sponsor.director}</p>
-                  <p>📍 <strong>Address:</strong> {sponsor.address}</p>
+                <div className="space-y-2 text-[#4a5a52]">
+                  <p><PersonIcon /><strong>Contact:</strong> {sponsor.director}</p>
+                  <p><MapPinIcon /><strong>Address:</strong> {sponsor.address}</p>
                 </div>
-                <div className="space-y-2 text-gray-600">
-                  <p>📞 <strong>Phone:</strong> <a href={`tel:${sponsor.phone}`} className="text-[#4A90D9] hover:underline">{sponsor.phone}</a></p>
-                  <p>✉️ <strong>Email:</strong> <a href={`mailto:${sponsor.email}`} className="text-[#4A90D9] hover:underline">{sponsor.email}</a></p>
+                <div className="space-y-2 text-[#4a5a52]">
+                  <p><PhoneIcon /><strong>Phone:</strong> <a href={`tel:${sponsor.phone}`} className="text-[#4A90D9] hover:underline">{sponsor.phone}</a></p>
+                  <p><EnvelopeIcon /><strong>Email:</strong> <a href={`mailto:${sponsor.email}`} className="text-[#4A90D9] hover:underline">{sponsor.email}</a></p>
                 </div>
               </div>
               <div className="mt-4">
-                <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#1B3A6B] text-white font-semibold rounded-lg text-sm hover:bg-[#152e56] transition-colors">Visit FastSigns Calgary →</a>
+                <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#15604A] text-white font-semibold rounded-lg text-sm hover:bg-[#0E3D2E] transition-colors">Visit FastSigns Calgary →</a>
               </div>
             </div>
           ))}
@@ -69,23 +110,23 @@ export default function SponsorsPage() {
       </section>
 
       {/* Sponsorship tiers */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#1B3A6B]">Become a Sponsor</h2>
-            <p className="mt-2 text-gray-500 max-w-xl mx-auto">
+            <h2 className="text-3xl font-bold text-[#15604A]">Become a Sponsor</h2>
+            <p className="mt-2 text-[#4a5a52] max-w-xl mx-auto">
               Align your brand with a trusted professional community and gain visibility among hundreds of engineers and tech professionals.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {tiers.map((tier) => (
               <div key={tier.name} className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-bold text-[#1B3A6B] mb-1">{tier.name}</h3>
-                <p className="text-[#C9A227] font-bold text-sm mb-4">{tier.price}</p>
+                <h3 className="text-lg font-bold text-[#15604A] mb-1">{tier.name}</h3>
+                <p className="text-[#C8A24B] font-bold text-sm mb-4">{tier.price}</p>
                 <ul className="space-y-2">
                   {tier.perks.map((p) => (
-                    <li key={p} className="flex gap-2 text-sm text-gray-600">
-                      <span className="text-[#C9A227]">✓</span>{p}
+                    <li key={p} className="flex gap-2 text-sm text-[#4a5a52]">
+                      <CheckIcon />{p}
                     </li>
                   ))}
                 </ul>
@@ -93,7 +134,7 @@ export default function SponsorsPage() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link href="/contact" className="inline-block px-8 py-4 bg-[#C9A227] text-[#1B3A6B] font-bold rounded-lg hover:bg-yellow-400 transition-colors text-lg">
+            <Link href="/contact" className="inline-block px-8 py-4 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">
               Enquire About Sponsorship
             </Link>
           </div>

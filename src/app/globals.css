@@ -1,19 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #1B3A6B;
-  --gold: #C9A227;
-  --sky: #4A90D9;
-  --background: #ffffff;
-  --foreground: #1a1a2e;
+  --green: #15604A;
+  --green-dark: #0E3D2E;
+  --gold: #C8A24B;
+  --gold-light: #d4aa5a;
+  --sand: #F2E9D2;
+  --ink: #1D2621;
+  --blue: #4A90D9;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+h1, h2 {
+  font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.7s ease forwards;
 }
