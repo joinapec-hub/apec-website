@@ -67,7 +67,7 @@ export default function MembershipPage() {
       {/* Hero */}
       <section className="py-24 bg-[#0E3D2E]">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Join APEC Canada</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">Join APEC Canada</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Membership unlocks a network of professionals, events, mentorship, and career support — all for as little as $10/year.
           </p>
@@ -78,7 +78,7 @@ export default function MembershipPage() {
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#15604A]">Membership Tiers</h2>
+            <h2 className="text-4xl font-bold text-[#15604A]">Membership Tiers</h2>
             <p className="mt-2 text-[#4a5a52]">Choose the membership that fits your stage of career.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -118,7 +118,7 @@ export default function MembershipPage() {
       {/* Payment */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#15604A] mb-8 text-center">Payment &amp; Registration</h2>
+          <h2 className="text-3xl font-bold text-[#15604A] mb-8 text-center">Payment &amp; Registration</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border border-gray-200 rounded-xl p-6">
               <h3 className="font-bold text-[#15604A] mb-2"><CreditCardIcon />Pay via Showpass</h3>
@@ -137,7 +137,7 @@ export default function MembershipPage() {
       {/* Rights */}
       <section className="py-16 bg-[#F2E9D2]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#15604A] mb-6 text-center">Member Rights &amp; Responsibilities</h2>
+          <h2 className="text-3xl font-bold text-[#15604A] mb-6 text-center">Member Rights &amp; Responsibilities</h2>
           <ul className="space-y-3 text-sm text-[#4a5a52]">
             {[
               "All regular and life members have equal rights and privileges, including the right to vote.",

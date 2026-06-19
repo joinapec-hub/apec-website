@@ -29,22 +29,22 @@ export default function Navbar() {
   return (
     <header className={`sticky top-0 z-50 bg-[#0E3D2E] transition-shadow ${scrolled ? "shadow-lg" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo + Name */}
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/apec-logo.png"
               alt="APEC Canada Logo"
-              width={44}
-              height={44}
+              width={54}
+              height={54}
               className="rounded-full"
               priority
             />
             <div className="leading-tight">
-              <span className="block text-white font-bold text-sm sm:text-base tracking-wide">
+              <span className="block text-white font-bold text-base sm:text-lg tracking-wide">
                 APEC Canada
               </span>
-              <span className="block text-[#C8A24B] text-xs hidden sm:block">
+              <span className="block text-[#C8A24B] text-xs sm:text-sm hidden sm:block">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
@@ -56,7 +56,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-md text-base font-medium transition-colors ${
                   pathname === link.href
                     ? "bg-[#C8A24B] text-[#0E3D2E]"
                     : "text-gray-200 hover:bg-white/10 hover:text-white"
@@ -67,7 +67,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/membership"
-              className="ml-3 px-4 py-2 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-md text-sm hover:bg-[#d4aa5a] transition-colors"
+              className="ml-3 px-5 py-2.5 bg-[#4A90D9] text-white font-bold rounded-md text-base hover:bg-[#3a7bc8] transition-colors"
             >
               Join Now
             </Link>

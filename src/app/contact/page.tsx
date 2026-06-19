@@ -4,7 +4,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="py-24 bg-[#0E3D2E]">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Get in Touch</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">Get in Touch</h1>
           <p className="text-xl text-gray-300">We would love to hear from you. Reach out any time.</p>
         </div>
       </section>
@@ -15,7 +15,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Info */}
             <div>
-              <h2 className="text-2xl font-bold text-[#15604A] mb-6">Contact Information</h2>
+              <h2 className="text-3xl font-bold text-[#15604A] mb-6">Contact Information</h2>
               <div className="space-y-5">
                 <div className="flex gap-4 items-start">
                   <div className="w-10 h-10 rounded-lg bg-[#15604A]/10 flex items-center justify-center text-[#15604A] flex-shrink-0">
@@ -71,7 +71,7 @@ export default function ContactPage() {
 
             {/* Form */}
             <div>
-              <h2 className="text-2xl font-bold text-[#15604A] mb-6">Send a Message</h2>
+              <h2 className="text-3xl font-bold text-[#15604A] mb-6">Send a Message</h2>
               <form className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>

@@ -14,7 +14,7 @@ export default function TeamPage() {
       {/* Hero */}
       <section className="py-24 bg-[#0E3D2E]">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Executive Team</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">Executive Team</h1>
           <p className="text-xl text-gray-300">Meet the dedicated professionals leading APEC Canada.</p>
         </div>
       </section>
@@ -44,7 +44,7 @@ export default function TeamPage() {
       {/* Governance note */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-[#15604A] mb-4">Governance Structure</h2>
+          <h2 className="text-3xl font-bold text-[#15604A] mb-4">Governance Structure</h2>
           <p className="text-[#4a5a52] leading-relaxed">
             The Executive Committee is elected every two years by regular and life members through a general election. All committee members must be registered as P.Eng. or EIT in Canada. No executive member receives remuneration for their service.
           </p>

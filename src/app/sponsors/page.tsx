@@ -70,7 +70,7 @@ export default function SponsorsPage() {
       {/* Hero */}
       <section className="py-24 bg-[#0E3D2E]">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Our Sponsors</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">Our Sponsors</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Sponsoring APEC Canada means investing in a community of skilled professionals who are building a stronger Canada.
           </p>
@@ -80,13 +80,13 @@ export default function SponsorsPage() {
       {/* Current Sponsors */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#15604A] mb-8 text-center">Current Sponsors</h2>
+          <h2 className="text-3xl font-bold text-[#15604A] mb-8 text-center">Current Sponsors</h2>
           {currentSponsors.map((sponsor) => (
             <div key={sponsor.name} className={`border-2 ${sponsor.color} rounded-2xl p-8`}>
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <div>
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${sponsor.badgeColor} mb-3`}>{sponsor.tier}</span>
-                  <h3 className="text-2xl font-bold text-[#15604A]">{sponsor.name}</h3>
+                  <h3 className="text-3xl font-bold text-[#15604A]">{sponsor.name}</h3>
                   <p className="text-[#C8A24B] font-semibold">{sponsor.tagline}</p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function SponsorsPage() {
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#15604A]">Become a Sponsor</h2>
+            <h2 className="text-4xl font-bold text-[#15604A]">Become a Sponsor</h2>
             <p className="mt-2 text-[#4a5a52] max-w-xl mx-auto">
               Align your brand with a trusted professional community and gain visibility among hundreds of engineers and tech professionals.
             </p>

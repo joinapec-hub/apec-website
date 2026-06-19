@@ -38,7 +38,7 @@ const events = [
 
 const typeColors: Record<string, string> = {
   "Governance": "bg-purple-100 text-purple-800",
-  "Professional Development": "bg-blue-100 text-blue-800",
+  "Professional Development": "bg-[#4A90D9]/10 text-[#4A90D9] border border-[#4A90D9]/30",
   "Networking": "bg-green-100 text-green-800",
   "Technical": "bg-orange-100 text-orange-800",
 };
@@ -77,13 +77,13 @@ export default function EventsPage() {
           <Image src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1600&q=80" alt="" fill className="object-cover" sizes="100vw" quality={70} />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Events &amp; Programs</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">Events &amp; Programs</h1>
           <p className="text-xl text-gray-300">Stay connected. Keep growing. Make an impact.</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
               <TicketIcon /> Buy Tickets on Showpass
             </a>
-            <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/30 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors">
+            <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
               <HeartIcon /> Donate / Support Us
             </a>
           </div>
@@ -104,7 +104,7 @@ export default function EventsPage() {
       {/* Events list */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-[#15604A] mb-8">Upcoming Events</h2>
+          <h2 className="text-3xl font-bold text-[#15604A] mb-8">Upcoming Events</h2>
           <div className="space-y-6">
             {events.map((event) => (
               <div key={event.title} className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow flex flex-col sm:flex-row gap-6">
@@ -136,7 +136,7 @@ export default function EventsPage() {
       {/* Past events */}
       <section className="py-16 bg-[#F2E9D2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-[#15604A] mb-4">Missed a Past Event?</h2>
+          <h2 className="text-3xl font-bold text-[#15604A] mb-4">Missed a Past Event?</h2>
           <p className="text-[#4a5a52] mb-6">Check our Facebook group for photos, recordings, and recaps from previous events.</p>
           <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">
             Visit Our Facebook Group →

@@ -83,7 +83,7 @@ export default function AboutPage() {
           <Image src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1600&q=80" alt="" fill className="object-cover" sizes="100vw" quality={70} />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">About APEC Canada</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">About APEC Canada</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             A professional community rooted in shared values — and open to all who share them.
           </p>
@@ -97,7 +97,7 @@ export default function AboutPage() {
             <div>
               <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Our Story</span>
               <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3" />
-              <h2 className="text-3xl font-bold text-[#15604A]">Where We Came From</h2>
+              <h2 className="text-4xl font-bold text-[#15604A]">Where We Came From</h2>
               <p className="mt-4 text-[#4a5a52] leading-relaxed">
                 The Association of Pakistani Engineers in Canada (APEC) was founded in Calgary, Alberta in 2011 by a group of engineers who understood the challenges of building a professional career in a new country. They created APEC as a bridge — a place where newcomers could find mentors, and where established professionals could give back.
               </p>
@@ -125,10 +125,10 @@ export default function AboutPage() {
               To bring together engineers and professionals from diverse backgrounds — fostering knowledge-sharing, professional development, and cross-cultural collaboration that strengthens both individuals and the communities they serve across Canada.
             </p>
           </div>
-          <div className="bg-[#C8A24B] rounded-2xl p-8">
-            <div className="mb-4 text-[#0E3D2E]"><EyeIcon /></div>
-            <h2 className="text-2xl font-bold text-[#0E3D2E] mb-4">Our Vision</h2>
-            <p className="leading-relaxed text-[#0E3D2E]">
+          <div className="bg-[#4A90D9] rounded-2xl p-8">
+            <div className="mb-4 text-white"><EyeIcon /></div>
+            <h2 className="text-2xl font-bold text-white mb-4">Our Vision</h2>
+            <p className="leading-relaxed text-blue-50">
               A Canada where every engineer and technically-minded professional — regardless of origin, ethnicity, or background — has the networks, mentorship, and opportunities they need to thrive and contribute.
             </p>
           </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#15604A]">Our Values</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A]">Our Values</h2>
             <p className="mt-3 text-[#4a5a52]">The principles that guide everything we do.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -159,7 +159,7 @@ export default function AboutPage() {
       {/* Objectives */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#15604A] mb-8 text-center">Our Objectives</h2>
+          <h2 className="text-4xl font-bold text-[#15604A] mb-8 text-center">Our Objectives</h2>
           <ul className="space-y-4">
             {[
               "Create an environment for exchanging technical knowledge within the Code of Ethics of APEGA.",
