@@ -7,52 +7,171 @@ export const metadata: Metadata = {
   description: "Browse photos from APEC Canada events — galas, networking mixers, workshops, and community celebrations.",
 };
 
+const BASE = "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/";
+const BLUR = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
+
 const events = [
   {
     name: "Eid Gala 2026",
     photos: [
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5719.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5721.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5722.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5723.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5724.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5725.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5726.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5727.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5728.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5730.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5731.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5736.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5738.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5739.jpeg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5740.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5718.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5719.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5720.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5721.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5722.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5723.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5724.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5725.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5726.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5727.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5728.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5730.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5731.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5736.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5738.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5739.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5740.jpeg",
     ],
   },
   {
     name: "Summer Gala 2025",
     photos: [
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B1%5D.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B2%5D.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B3%5D.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26%5B1%5D.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27%5B1%5D.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27%5B2%5D.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-28.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-29.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B1%5D.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B2%5D.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B3%5D.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26%5B1%5D.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27%5B1%5D.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27%5B2%5D.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-28.jpg",
+      "2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-29.jpg",
+      "2025/Summer%20Gala%202025/WhatsApp%20Image%202026-04-03%20at%209.48.25%20AM.jpeg",
+      "2025/Summer%20Gala%202025/WhatsApp%20Image%202026-04-03%20at%209.48.28%20AM%20%281%29.jpeg",
+      "2025/Summer%20Gala%202025/WhatsApp%20Image%202026-04-03%20at%209.48.28%20AM.jpeg",
     ],
   },
   {
     name: "Eid Gala 2024",
     photos: [
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-39.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-40.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42%5B1%5D.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-46.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-52.jpg",
-      "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-55.jpg",
+      "2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-39.jpg",
+      "2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-40.jpg",
+      "2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42.jpg",
+      "2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42%5B1%5D.jpg",
+      "2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-46.jpg",
+      "2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-52.jpg",
+      "2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-55.jpg",
+    ],
+  },
+  {
+    name: "Picnic and Youth Networking 2019",
+    photos: [
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.47%20AM.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.48%20AM%20%281%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.48%20AM.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.51%20AM%20%282%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.51%20AM%20%283%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.52%20AM%20%281%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.52%20AM%20%283%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.52%20AM.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.54%20AM%20%283%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.58%20AM%20%281%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.56.00%20AM%20%281%29.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.56.01%20AM.jpeg",
+      "2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.56.02%20AM%20%281%29.jpeg",
+    ],
+  },
+  {
+    name: "Technical Workshop 2017",
+    photos: [
+      "2017/Technical%20Workshop%202017/WhatsApp%20Image%202026-04-03%20at%2010.21.47%20AM.jpeg",
+      "2017/Technical%20Workshop%202017/WhatsApp%20Image%202026-04-03%20at%2010.21.51%20AM%20%283%29.jpeg",
+      "2017/Technical%20Workshop%202017/WhatsApp%20Image%202026-04-03%20at%2010.21.52%20AM%20%282%29.jpeg",
+      "2017/Technical%20Workshop%202017/WhatsApp%20Image%202026-04-03%20at%2010.21.53%20AM.jpeg",
+    ],
+  },
+  {
+    name: "Resume Writing Skills 2016",
+    photos: [
+      "2016/Resume%20Writing%20skills%202016/PHOTO-2026-04-03-10-32-27.jpg",
+      "2016/Resume%20Writing%20skills%202016/PHOTO-2026-04-03-10-32-32.jpg",
+      "2016/Resume%20Writing%20skills%202016/PHOTO-2026-04-03-10-32-38.jpg",
+      "2016/Resume%20Writing%20skills%202016/PHOTO-2026-04-03-10-32-52.jpg",
+      "2016/Resume%20Writing%20skills%202016/PHOTO-2026-04-03-10-33-02.jpg",
+      "2016/Resume%20Writing%20skills%202016/PHOTO-2026-04-03-10-33-30.jpg",
+      "2016/Resume%20Writing%20skills%202016/PHOTO-2026-04-03-10-33-53.jpg",
+    ],
+  },
+  {
+    name: "Networking Session 2016",
+    photos: [
+      "2016/Networking%20Session%202016/PHOTO-2026-03-31-09-52-36.jpg",
+      "2016/Networking%20Session%202016/PHOTO-2026-03-31-09-52-37.jpg",
+      "2016/Networking%20Session%202016/PHOTO-2026-03-31-09-52-37%5B1%5D.jpg",
+      "2016/Networking%20Session%202016/PHOTO-2026-03-31-09-52-38.jpg",
+    ],
+  },
+  {
+    name: "Technical Workshop 2015",
+    photos: [
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.11%20PM.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.13%20PM%20%281%29.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.13%20PM.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.14%20PM%20%281%29.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.14%20PM%20%282%29.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.14%20PM%20%283%29.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.14%20PM%20%284%29.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.14%20PM%20%285%29.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.14%20PM.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.15%20PM%20%281%29.jpeg",
+      "2015/Technical%20Workshop%202015/WhatsApp%20Image%202026-04-03%20at%2012.34.15%20PM.jpeg",
+    ],
+  },
+  {
+    name: "Picnic and Networking 2014",
+    photos: [
+      "2014/Picnic%20and%20Networking%202014/PHOTO-2026-04-03-10-06-40.jpg",
+      "2014/Picnic%20and%20Networking%202014/PHOTO-2026-04-03-10-07-48.jpg",
+      "2014/Picnic%20and%20Networking%202014/PHOTO-2026-04-03-10-07-54.jpg",
+      "2014/Picnic%20and%20Networking%202014/PHOTO-2026-04-03-10-08-44.jpg",
+      "2014/Picnic%20and%20Networking%202014/WhatsApp%20Image%202026-04-03%20at%2010.09.08%20AM.jpeg",
+      "2014/Picnic%20and%20Networking%202014/WhatsApp%20Image%202026-04-03%20at%2010.09.22%20AM.jpeg",
+    ],
+  },
+  {
+    name: "Professional Communication Seminar 2014",
+    photos: [
+      "2014/Professional%20Communication%20Seminar%202014/WhatsApp%20Image%202026-04-03%20at%208.16.28%20PM.jpeg",
+      "2014/Professional%20Communication%20Seminar%202014/WhatsApp%20Image%202026-04-03%20at%208.16.30%20PM.jpeg",
+      "2014/Professional%20Communication%20Seminar%202014/WhatsApp%20Image%202026-04-03%20at%208.16.32%20PM%20%284%29.jpeg",
+      "2014/Professional%20Communication%20Seminar%202014/WhatsApp%20Image%202026-04-03%20at%208.16.32%20PM%20%285%29.jpeg",
+      "2014/Professional%20Communication%20Seminar%202014/WhatsApp%20Image%202026-04-03%20at%208.16.33%20PM%20%282%29.jpeg",
+      "2014/Professional%20Communication%20Seminar%202014/WhatsApp%20Image%202026-04-03%20at%208.16.33%20PM%20%283%29.jpeg",
+      "2014/Professional%20Communication%20Seminar%202014/WhatsApp%20Image%202026-04-03%20at%208.16.33%20PM%20%285%29.jpeg",
+    ],
+  },
+  {
+    name: "Piping Stress Workshop 2013",
+    photos: [
+      "2013/Work%20shop%20piping%20stress%20and%20process%20engineering%202013/PHOTO-2026-04-03-10-22-58.jpg",
+      "2013/Work%20shop%20piping%20stress%20and%20process%20engineering%202013/PHOTO-2026-04-03-10-23-03.jpg",
+      "2013/Work%20shop%20piping%20stress%20and%20process%20engineering%202013/PHOTO-2026-04-03-10-23-04.jpg",
+      "2013/Work%20shop%20piping%20stress%20and%20process%20engineering%202013/PHOTO-2026-04-03-10-23-04%5B1%5D.jpg",
+      "2013/Work%20shop%20piping%20stress%20and%20process%20engineering%202013/PHOTO-2026-04-03-10-23-05.jpg",
+      "2013/Work%20shop%20piping%20stress%20and%20process%20engineering%202013/PHOTO-2026-04-03-10-23-05%5B1%5D.jpg",
+    ],
+  },
+  {
+    name: "Seminar on Induction Motors 2012",
+    photos: [
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.15%20PM.jpeg",
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.16%20PM%20%282%29.jpeg",
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.16%20PM.jpeg",
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.23%20PM%20%283%29.jpeg",
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.25%20PM%20%282%29.jpeg",
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.25%20PM%20%285%29.jpeg",
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.28%20PM%20%282%29.jpeg",
+      "2012/Seminar%20Induction%20Motors%202012/WhatsApp%20Image%202026-04-03%20at%2012.34.28%20PM%20%284%29.jpeg",
     ],
   },
 ];
@@ -82,23 +201,26 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery sections */}
-      {events.map((event) => (
-        <section key={event.name} className="py-16 bg-white border-b border-gray-100 last:border-0">
+      {events.map((event, idx) => (
+        <section key={event.name} className={`py-16 border-b border-gray-100 last:border-0 ${idx % 2 === 0 ? "bg-white" : "bg-[#f8fafe]"}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-1 h-8 bg-[#C8A24B] rounded-full" />
               <h2 className="text-3xl font-bold text-[#15604A]">{event.name}</h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-              {event.photos.map((src, i) => (
+              {event.photos.map((path, i) => (
                 <div key={i} className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer">
                   <Image
-                    src={src}
+                    src={BASE + path}
                     alt={`${event.name} — photo ${i + 1}`}
                     fill
+                    loading="lazy"
+                    placeholder="blur"
+                    blurDataURL={BLUR}
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                    quality={75}
+                    quality={60}
                   />
                   <div className="absolute inset-0 bg-[#0E3D2E]/20 group-hover:bg-[#0E3D2E]/0 transition-colors duration-300" />
                 </div>

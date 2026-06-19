@@ -49,14 +49,18 @@ const highlights = [
 ];
 
 const communityPhotos = [
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5723.jpeg", alt: "APEC Eid Gala 2026" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B1%5D.jpg", alt: "APEC Summer Gala 2025" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42.jpg", alt: "APEC Eid Gala 2024" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5724.jpeg", alt: "APEC Eid Gala 2026" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5718.jpeg", alt: "APEC Eid Gala 2026" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5719.jpeg", alt: "APEC Eid Gala 2026" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5720.jpeg", alt: "APEC Eid Gala 2026" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26.jpg", alt: "APEC Summer Gala 2025" },
   { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27.jpg", alt: "APEC Summer Gala 2025" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-52.jpg", alt: "APEC Eid Gala 2024" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5731.jpeg", alt: "APEC Eid Gala 2026" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27%5B1%5D.jpg", alt: "APEC Summer Gala 2025" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-28.jpg", alt: "APEC Summer Gala 2025" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-39.jpg", alt: "APEC Eid Gala 2024" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-40.jpg", alt: "APEC Eid Gala 2024" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42.jpg", alt: "APEC Eid Gala 2024" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.47%20AM.jpeg", alt: "APEC Picnic 2019" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.48%20AM.jpeg", alt: "APEC Picnic 2019" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.52%20AM.jpeg", alt: "APEC Picnic 2019" },
 ];
 
 export default function HomePage() {
@@ -65,12 +69,12 @@ export default function HomePage() {
       <HeroCarousel />
 
       {/* Stats */}
-      <section className="bg-[#F2E9D2] py-14">
+      <section className="bg-[#0a3060] py-14">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s, i) => (
-            <div key={s.label} className={`pl-5 border-l-4 ${i % 2 === 0 ? "border-[#C8A24B]" : "border-[#4A90D9]"}`}>
-              <p className={`text-5xl font-bold ${i % 2 === 0 ? "text-[#15604A]" : "text-[#4A90D9]"}`}>{s.value}</p>
-              <p className="text-[#4a5a52] font-medium text-base mt-1">{s.label}</p>
+            <div key={s.label} className={`pl-5 border-l-4 border-[#C8A24B]`}>
+              <p className="text-white text-5xl font-bold">{s.value}</p>
+              <p className="text-[#C8A24B] font-medium text-base mt-1">{s.label}</p>
             </div>
           ))}
         </div>
@@ -96,7 +100,7 @@ export default function HomePage() {
       </section>
 
       {/* Highlights */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#4A90D9]/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A]">What We Offer</h2>
@@ -136,14 +140,14 @@ export default function HomePage() {
       </section>
 
       {/* Community Photos */}
-      <section className="py-16 bg-[#0E3D2E]" style={{ backgroundImage: "radial-gradient(#C8A24B15 1px, transparent 1px)", backgroundSize: "24px 24px" }}>
+      <section className="py-16 bg-[#0a3060]" style={{ backgroundImage: "radial-gradient(#C8A24B15 1px, transparent 1px)", backgroundSize: "24px 24px" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Real People. Real Community.</span>
             <h2 className="mt-2 text-4xl sm:text-5xl font-bold text-white">Life at APEC</h2>
             <p className="mt-3 text-gray-400 max-w-xl mx-auto">From Eid Galas to Summer mixers — here&apos;s what belonging to APEC looks like.</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
             {communityPhotos.map((photo, i) => (
               <div key={i} className="relative aspect-square rounded-xl overflow-hidden group">
                 <Image
@@ -154,7 +158,7 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   quality={80}
                 />
-                <div className="absolute inset-0 bg-[#0E3D2E]/30 group-hover:bg-[#0E3D2E]/10 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-[#0a3060]/30 group-hover:bg-[#0a3060]/10 transition-colors duration-300" />
               </div>
             ))}
           </div>

@@ -52,9 +52,12 @@ export default function HeroCarousel() {
             alt={slide.alt}
             fill
             priority={i === 0}
+            loading={i === 0 ? "eager" : undefined}
+            placeholder={i !== 0 ? "blur" : undefined}
+            blurDataURL={i !== 0 ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" : undefined}
             className="object-cover object-center"
             sizes="100vw"
-            quality={85}
+            quality={70}
           />
         </div>
       ))}
