@@ -45,7 +45,7 @@ export default function Navbar() {
               <span className="block text-white font-bold text-base sm:text-lg tracking-wide">
                 APEC Canada
               </span>
-              <span className="block text-[#C8A24B] text-xs sm:text-sm hidden sm:block">
+              <span className="block text-[#C8A24B] text-[11px] hidden sm:block">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
