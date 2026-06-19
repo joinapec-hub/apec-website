@@ -1,5 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import HeroCarousel from "@/components/HeroCarousel";
 
 const stats = [
   { value: "200+", label: "Members" },
@@ -47,27 +48,21 @@ const highlights = [
   },
 ];
 
+const communityPhotos = [
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5723.jpeg", alt: "APEC Eid Gala 2026" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-25%5B1%5D.jpg", alt: "APEC Summer Gala 2025" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42.jpg", alt: "APEC Eid Gala 2024" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5724.jpeg", alt: "APEC Eid Gala 2026" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27.jpg", alt: "APEC Summer Gala 2025" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-52.jpg", alt: "APEC Eid Gala 2024" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5731.jpeg", alt: "APEC Eid Gala 2026" },
+  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27%5B1%5D.jpg", alt: "APEC Summer Gala 2025" },
+];
+
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <Image src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80" alt="Professionals collaborating" fill priority className="object-cover object-center" sizes="100vw" quality={85} />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0E3D2E]/95 to-[#15604A]/70" />
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
-          <span className="inline-block px-4 py-1.5 bg-[#C8A24B]/20 border border-[#C8A24B] rounded-full text-[#C8A24B] text-sm font-medium mb-8">Calgary, Alberta · Est. 2011</span>
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            Engineers &amp; Professionals<br /><span className="text-[#C8A24B]">Building Canada Together</span>
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">
-            APEC Canada is a non-profit community welcoming professionals from all backgrounds to network, grow, and make a lasting impact.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-all shadow-lg">Become a Member</Link>
-            <Link href="/events" className="px-10 py-4 bg-[#4A90D9] text-white font-bold rounded-lg text-lg hover:bg-[#3a7bc8] transition-all shadow-lg">Upcoming Events</Link>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel />
 
       {/* Stats */}
       <section className="bg-[#F2E9D2] py-14">
@@ -94,7 +89,7 @@ export default function HomePage() {
               <Link href="/about" className="mt-6 inline-block px-6 py-3 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">Learn More About Us</Link>
             </div>
             <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <Image src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" alt="Diverse professionals" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={85} />
+              <Image src="https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5719.jpeg" alt="APEC community event" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={85} />
             </div>
           </div>
         </div>
@@ -126,7 +121,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <Image src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80" alt="Community event" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={85} />
+              <Image src="https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26.jpg" alt="APEC event" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={85} />
             </div>
             <div>
               <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Events &amp; Programs</span>
@@ -140,14 +135,48 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Community Photos */}
+      <section className="py-16 bg-[#0E3D2E]" style={{ backgroundImage: "radial-gradient(#C8A24B15 1px, transparent 1px)", backgroundSize: "24px 24px" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Real People. Real Community.</span>
+            <h2 className="mt-2 text-4xl sm:text-5xl font-bold text-white">Life at APEC</h2>
+            <p className="mt-3 text-gray-400 max-w-xl mx-auto">From Eid Galas to Summer mixers — here&apos;s what belonging to APEC looks like.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {communityPhotos.map((photo, i) => (
+              <div key={i} className="relative aspect-square rounded-xl overflow-hidden group">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  quality={80}
+                />
+                <div className="absolute inset-0 bg-[#0E3D2E]/30 group-hover:bg-[#0E3D2E]/10 transition-colors duration-300" />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/gallery" className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">
+              View Full Gallery
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section
-        className="py-16 bg-[#0E3D2E]"
+        className="py-20 bg-[#0E3D2E]"
         style={{ backgroundImage: "radial-gradient(#C8A24B22 1px, transparent 1px)", backgroundSize: "20px 20px" }}
       >
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Ready to Be Part of Something Bigger?</h2>
-          <p className="text-gray-300 text-lg mb-8">Membership starts at just $10/year. Join a community that invests in your professional future.</p>
+          <p className="text-gray-300 text-xl mb-8">Membership starts at just $10/year. Join a community that invests in your professional future.</p>
           <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">Join APEC Today</Link>
         </div>
       </section>

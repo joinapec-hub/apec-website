@@ -78,11 +78,18 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-24 bg-[#0E3D2E] overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <Image src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=1600&q=80" alt="" fill className="object-cover" sizes="100vw" quality={70} />
-        </div>
-        <div className="relative max-w-4xl mx-auto px-4 text-center text-white">
+      <section
+        className="relative py-28 overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #15604A 0%, #0E3D2E 60%, #0a2c1e 100%)" }}
+      >
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: "repeating-linear-gradient(45deg, #C8A24B 0, #C8A24B 1px, transparent 0, transparent 50%)",
+            backgroundSize: "16px 16px",
+          }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">About APEC Canada</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             A professional community rooted in shared values — and open to all who share them.

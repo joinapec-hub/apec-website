@@ -12,8 +12,18 @@ export default function TeamPage() {
   return (
     <>
       {/* Hero */}
-      <section className="py-24 bg-[#0E3D2E]">
-        <div className="max-w-4xl mx-auto px-4 text-center text-white">
+      <section
+        className="relative py-28 overflow-hidden"
+        style={{ background: "linear-gradient(135deg, #15604A 0%, #0E3D2E 60%, #0a2c1e 100%)" }}
+      >
+        <div
+          className="absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage: "repeating-linear-gradient(45deg, #C8A24B 0, #C8A24B 1px, transparent 0, transparent 50%)",
+            backgroundSize: "16px 16px",
+          }}
+        />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">Executive Team</h1>
           <p className="text-xl text-gray-300">Meet the dedicated professionals leading APEC Canada.</p>
         </div>
