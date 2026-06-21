@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import HeroCarousel from "@/components/HeroCarousel";
 
 const stats = [
   { value: "200+", label: "Members" },
@@ -48,31 +47,74 @@ const highlights = [
   },
 ];
 
-const communityPhotos = [
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5718.jpeg", alt: "APEC Eid Gala 2026" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5719.jpeg", alt: "APEC Eid Gala 2026" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5720.jpeg", alt: "APEC Eid Gala 2026" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26.jpg", alt: "APEC Summer Gala 2025" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-27.jpg", alt: "APEC Summer Gala 2025" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-28.jpg", alt: "APEC Summer Gala 2025" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-39.jpg", alt: "APEC Eid Gala 2024" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-40.jpg", alt: "APEC Eid Gala 2024" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2024/APEC%20Eid%20Gala%202024/PHOTO-2026-03-31-22-30-42.jpg", alt: "APEC Eid Gala 2024" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.47%20AM.jpeg", alt: "APEC Picnic 2019" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.48%20AM.jpeg", alt: "APEC Picnic 2019" },
-  { src: "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2019/Picnic%20and%20Youth%20networking%202019/WhatsApp%20Image%202026-04-03%20at%209.55.52%20AM.jpeg", alt: "APEC Picnic 2019" },
-];
-
 export default function HomePage() {
   return (
     <>
-      <HeroCarousel />
+      {/* Hero — full-bleed background photo */}
+      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+        <Image
+          src="https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Assets/APEC%20Background%20photo.jpeg"
+          alt="APEC Canada background"
+          fill
+          priority
+          quality={85}
+          className="object-cover object-center"
+          sizes="100vw"
+        />
+        {/* Layered overlay: deep green at bottom, midnight blue at top */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(170deg, rgba(10,48,96,0.72) 0%, rgba(14,61,46,0.78) 55%, rgba(7,31,21,0.88) 100%)" }} />
+        {/* Subtle gold diagonal texture */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: "repeating-linear-gradient(45deg, #C8A24B 0, #C8A24B 1px, transparent 0, transparent 50%)",
+            backgroundSize: "18px 18px",
+          }}
+        />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-6">
+            <Image src="/apec-logo.png" alt="APEC Canada" width={96} height={96} className="rounded-full shadow-2xl ring-4 ring-[#C8A24B]/40" />
+          </div>
+
+          <div className="inline-block px-4 py-1 mb-4 rounded-full border border-[#C8A24B]/50 text-[#C8A24B] text-sm font-semibold tracking-widest uppercase">
+            Est. 2011 · Calgary, Canada
+          </div>
+
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+            Connecting Pakistani<br />
+            <span className="text-[#C8A24B]">Engineers</span> Across Canada
+          </h1>
+
+          <p className="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto mb-10 leading-relaxed">
+            A professional community open to engineers and professionals from all backgrounds — united by purpose, driven by excellence.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/membership" className="px-8 py-4 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">
+              Join APEC Today
+            </Link>
+            <Link href="/about" className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg text-lg hover:bg-white/20 transition-colors border border-white/20">
+              Learn More
+            </Link>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50 text-xs">
+          <span>Scroll</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 animate-bounce">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </section>
 
       {/* Stats */}
       <section className="bg-[#0a3060] py-14">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((s, i) => (
-            <div key={s.label} className={`pl-5 border-l-4 border-[#C8A24B]`}>
+          {stats.map((s) => (
+            <div key={s.label} className="pl-5 border-l-4 border-[#C8A24B]">
               <p className="text-white text-5xl font-bold">{s.value}</p>
               <p className="text-[#C8A24B] font-medium text-base mt-1">{s.label}</p>
             </div>
@@ -83,18 +125,27 @@ export default function HomePage() {
       {/* About teaser */}
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Who We Are</span>
-              <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3" />
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A] leading-tight">A Community Built on Connection and Purpose</h2>
-              <p className="mt-4 text-[#4a5a52] leading-relaxed">Founded in Calgary in 2011, APEC Canada was created to support Pakistani-Canadian engineers navigating a new professional landscape. Today, we have grown into a vibrant, inclusive community that welcomes professionals from every culture, discipline, and background.</p>
-              <p className="mt-3 text-[#4a5a52] leading-relaxed">We believe diverse perspectives strengthen communities. Our events, mentorship programs, and networking opportunities are open to anyone who shares our commitment to professional excellence and community service.</p>
-              <Link href="/about" className="mt-6 inline-block px-6 py-3 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">Learn More About Us</Link>
-            </div>
-            <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <Image src="https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2026/Eid%20Gala%202026/IMG_5719.jpeg" alt="APEC community event" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={85} />
-            </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Who We Are</span>
+            <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A] leading-tight">A Community Built on Connection and Purpose</h2>
+            <p className="mt-5 text-[#4a5a52] leading-relaxed text-lg">Founded in Calgary in 2011, APEC Canada was created to support Pakistani-Canadian engineers navigating a new professional landscape. Today, we have grown into a vibrant, inclusive community that welcomes professionals from every culture, discipline, and background.</p>
+            <p className="mt-4 text-[#4a5a52] leading-relaxed">We believe diverse perspectives strengthen communities. Our events, mentorship programs, and networking opportunities are open to anyone who shares our commitment to professional excellence and community service.</p>
+            <Link href="/about" className="mt-8 inline-block px-8 py-3.5 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">Learn More About Us</Link>
+          </div>
+
+          {/* Decorative stat strip */}
+          <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { label: "Non-Partisan, Non-Political", desc: "An independent voluntary professional organization — no government or party affiliations." },
+              { label: "Open to All Backgrounds", desc: "Engineers and professionals from every culture, discipline, and nationality are welcome." },
+              { label: "Alberta-Based, Canada-Wide", desc: "Headquartered in Calgary with members and impact across Canada." },
+            ].map((item) => (
+              <div key={item.label} className="bg-white rounded-xl p-6 shadow-sm border-l-4 border-[#4A90D9]">
+                <h3 className="font-bold text-[#0a3060] mb-2">{item.label}</h3>
+                <p className="text-[#4a5a52] text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -122,53 +173,14 @@ export default function HomePage() {
 
       {/* Events teaser */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
-              <Image src="https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/2025/Summer%20Gala%202025/PHOTO-2026-04-03-09-48-26.jpg" alt="APEC event" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={85} />
-            </div>
-            <div>
-              <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Events &amp; Programs</span>
-              <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3" />
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A] leading-tight">Join Our Next Gathering</h2>
-              <p className="mt-4 text-[#4a5a52] leading-relaxed">From technical seminars and P.Eng exam prep to cultural celebrations and community socials — our calendar is packed with meaningful events year-round.</p>
-              <p className="mt-3 text-[#4a5a52] leading-relaxed">Events are powered by Showpass for seamless ticketing. Many events are free or low-cost, with fundraiser opportunities to support our community programs.</p>
-              <Link href="/events" className="mt-6 inline-block px-6 py-3 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">View All Events</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Community Photos */}
-      <section className="py-16 bg-[#0a3060]" style={{ backgroundImage: "radial-gradient(#C8A24B15 1px, transparent 1px)", backgroundSize: "24px 24px" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Real People. Real Community.</span>
-            <h2 className="mt-2 text-4xl sm:text-5xl font-bold text-white">Life at APEC</h2>
-            <p className="mt-3 text-gray-400 max-w-xl mx-auto">From Eid Galas to Summer mixers — here&apos;s what belonging to APEC looks like.</p>
-          </div>
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-            {communityPhotos.map((photo, i) => (
-              <div key={i} className="relative aspect-square rounded-xl overflow-hidden group">
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  quality={80}
-                />
-                <div className="absolute inset-0 bg-[#0a3060]/30 group-hover:bg-[#0a3060]/10 transition-colors duration-300" />
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/gallery" className="inline-flex items-center gap-2 px-8 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">
-              View Full Gallery
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Events &amp; Programs</span>
+          <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A] leading-tight">Join Our Next Gathering</h2>
+          <p className="mt-4 text-[#4a5a52] leading-relaxed text-lg max-w-2xl mx-auto">From technical seminars and P.Eng exam prep to cultural celebrations and community socials — our calendar is packed with meaningful events year-round. Ticketing powered by Showpass.</p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/events" className="px-8 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">View Upcoming Events</Link>
+            <Link href="/gallery" className="px-8 py-3.5 bg-[#0a3060] text-white font-semibold rounded-lg hover:bg-[#0d3d7a] transition-colors text-lg">View Photo Gallery</Link>
           </div>
         </div>
       </section>
