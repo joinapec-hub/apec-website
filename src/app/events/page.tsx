@@ -1,56 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const events = [
-  {
-    date: "Aug 15, 2026",
-    title: "Annual General Meeting 2026",
-    type: "Governance",
-    location: "Calgary, AB",
-    desc: "Join us for the Annual General Meeting where we review achievements, present financials, and plan the year ahead. All members welcome.",
-    free: true,
-  },
-  {
-    date: "Sep 6, 2026",
-    title: "P.Eng Exam Prep Workshop",
-    type: "Professional Development",
-    location: "Online (Zoom)",
-    desc: "An intensive workshop to help engineers prepare for the National Professional Practice Exam (NPPE). Led by licensed P.Eng professionals.",
-    free: false,
-  },
-  {
-    date: "Sep 20, 2026",
-    title: "Summer Networking Mixer",
-    type: "Networking",
-    location: "Calgary, AB",
-    desc: "Connect with fellow engineers and professionals in a relaxed social setting. Light refreshments provided. All backgrounds welcome.",
-    free: true,
-  },
-  {
-    date: "Oct 11, 2026",
-    title: "Technical Seminar: AI in Engineering",
-    type: "Technical",
-    location: "Calgary, AB",
-    desc: "Industry experts discuss the impact of artificial intelligence on engineering workflows, design, and safety — and what it means for your career.",
-    free: false,
-  },
-];
-
-const typeColors: Record<string, string> = {
-  "Governance": "bg-purple-100 text-purple-800",
-  "Professional Development": "bg-[#4A90D9]/10 text-[#4A90D9] border border-[#4A90D9]/30",
-  "Networking": "bg-green-100 text-green-800",
-  "Technical": "bg-orange-100 text-orange-800",
-};
-
-function MapPinIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block mr-1 -mt-0.5">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-    </svg>
-  );
-}
+const BBQ_POSTER = "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Assets/Event%20Posters/APEC%20BBQ%20AUG%202026.JPG";
 
 function TicketIcon() {
   return (
@@ -108,35 +59,82 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Events list */}
+      {/* Upcoming Events */}
       <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#15604A] mb-8">Upcoming Events</h2>
-          <div className="space-y-6">
-            {events.map((event) => (
-              <div key={event.title} className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-md transition-shadow flex flex-col sm:flex-row gap-6">
-                <div className="flex-shrink-0 text-center sm:text-left">
-                  <div className="bg-[#15604A] text-white rounded-xl p-3 inline-block sm:block min-w-[80px]">
-                    <p className="text-xs font-medium opacity-70">{event.date.split(" ")[0]}</p>
-                    <p className="text-2xl font-bold">{event.date.split(" ")[1].replace(",", "")}</p>
-                    <p className="text-xs opacity-70">{event.date.split(" ")[2]}</p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#15604A] mb-10">Upcoming Events</h2>
+
+          {/* BBQ Event Card */}
+          <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              {/* Poster */}
+              <div className="relative h-72 lg:h-auto min-h-[320px]">
+                <Image
+                  src={BBQ_POSTER}
+                  alt="APEC BBQ August 2026"
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={85}
+                  priority
+                />
+              </div>
+
+              {/* Details */}
+              <div className="p-8 flex flex-col justify-between">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-4">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-100 text-orange-800">Community Social</span>
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Family Friendly</span>
                   </div>
+
+                  <h3 className="text-3xl font-bold text-[#15604A] mb-3">APEC Annual BBQ 2026</h3>
+
+                  <div className="space-y-3 text-[#4a5a52] text-sm mb-6">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-[#15604A]/10 flex items-center justify-center text-[#15604A] flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                        </svg>
+                      </div>
+                      <span className="font-medium">August 2026</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-[#15604A]/10 flex items-center justify-center text-[#15604A] flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                        </svg>
+                      </div>
+                      <span className="font-medium">Calgary, Alberta</span>
+                    </div>
+                  </div>
+
+                  <p className="text-[#4a5a52] leading-relaxed">
+                    Join us for APEC's annual summer BBQ — a beloved community tradition bringing together engineers, professionals, and families for food, fun, and great conversation. All members and guests are welcome.
+                  </p>
                 </div>
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${typeColors[event.type]}`}>{event.type}</span>
-                    {event.free && <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-800">Free</span>}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#15604A]">{event.title}</h3>
-                  <p className="text-[#4a5a52] text-sm mt-1"><MapPinIcon />{event.location}</p>
-                  <p className="text-[#4a5a52] text-sm mt-2 leading-relaxed">{event.desc}</p>
-                  <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block px-5 py-2 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-sm hover:bg-[#d4aa5a] transition-colors">
-                    {event.free ? "Register Free" : "Get Tickets"}
+
+                <div className="mt-8">
+                  <a
+                    href="https://www.showpass.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
+                  >
+                    <TicketIcon /> Get Tickets on Showpass
                   </a>
+                  <p className="mt-3 text-xs text-gray-400">Ticket link will be updated closer to the event date.</p>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
+
+          <p className="mt-8 text-center text-[#4a5a52] text-sm">
+            More events coming soon. Follow us on{" "}
+            <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline font-medium">Facebook</a>{" "}
+            for announcements.
+          </p>
         </div>
       </section>
 
@@ -144,10 +142,15 @@ export default function EventsPage() {
       <section className="py-16 bg-[#F2E9D2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-[#15604A] mb-4">Missed a Past Event?</h2>
-          <p className="text-[#4a5a52] mb-6">Check our Facebook group for photos, recordings, and recaps from previous events.</p>
-          <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">
-            Visit Our Facebook Group →
-          </a>
+          <p className="text-[#4a5a52] mb-6">Browse our photo gallery or visit the Facebook group for photos, recordings, and recaps from previous events.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/gallery" className="inline-flex items-center gap-2 px-6 py-3 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">
+              View Photo Gallery →
+            </Link>
+            <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-semibold rounded-lg hover:bg-[#3a7bc8] transition-colors">
+              Visit Our Facebook Group →
+            </a>
+          </div>
         </div>
       </section>
     </>
