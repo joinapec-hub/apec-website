@@ -61,8 +61,8 @@ export default function HomePage() {
           className="object-cover object-center"
           sizes="100vw"
         />
-        {/* Layered overlay: deep green at bottom, midnight blue at top */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(170deg, rgba(10,48,96,0.72) 0%, rgba(14,61,46,0.78) 55%, rgba(7,31,21,0.88) 100%)" }} />
+        {/* Navy blue overlay matching reference design */}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(170deg, rgba(15,31,92,0.82) 0%, rgba(10,22,69,0.85) 55%, rgba(6,13,50,0.90) 100%)" }} />
         {/* Subtle gold diagonal texture */}
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -111,7 +111,7 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-[#0a3060] py-14">
+      <section className="bg-[#0f1f5c] py-14">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="pl-5 border-l-4 border-[#C8A24B]">
@@ -180,7 +180,7 @@ export default function HomePage() {
           <p className="mt-4 text-[#4a5a52] leading-relaxed text-lg max-w-2xl mx-auto">From technical seminars and P.Eng exam prep to cultural celebrations and community socials — our calendar is packed with meaningful events year-round. Ticketing powered by Showpass.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/events" className="px-8 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">View Upcoming Events</Link>
-            <Link href="/gallery" className="px-8 py-3.5 bg-[#0a3060] text-white font-semibold rounded-lg hover:bg-[#0d3d7a] transition-colors text-lg">View Photo Gallery</Link>
+            <Link href="/gallery" className="px-8 py-3.5 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0d3d7a] transition-colors text-lg">View Photo Gallery</Link>
           </div>
         </div>
       </section>
