@@ -14,20 +14,22 @@ export default function ContactPage() {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("https://formsubmit.co/ajax/joinapec@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
-          from_name: `${form.firstName} ${form.lastName}`.trim(),
+          name: `${form.firstName} ${form.lastName}`.trim(),
           email: form.email,
-          subject: `APEC Website Contact: ${form.subject}`,
+          _subject: `APEC Website Contact: ${form.subject}`,
+          subject: form.subject,
           message: form.message,
-          to_email: "joinapec@gmail.com",
+          _template: "table",
+          _captcha: "false",
         }),
       });
       const data = await res.json();
-      setStatus(data.success ? "success" : "error");
+      const ok = res.ok && (data.success === true || data.success === "true");
+      setStatus(ok ? "success" : "error");
     } catch {
       setStatus("error");
     }

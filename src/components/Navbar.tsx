@@ -30,22 +30,22 @@ export default function Navbar() {
   return (
     <header className={`sticky top-0 z-50 bg-[#0E3D2E] transition-shadow ${scrolled ? "shadow-lg" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo + Name */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-4">
             <Image
               src="/apec-logo.png"
               alt="APEC Canada Logo"
-              width={54}
-              height={54}
-              className="rounded-full"
+              width={76}
+              height={76}
+              className="rounded-full ring-2 ring-[#C8A24B]/40 shadow-md"
               priority
             />
             <div className="leading-tight">
-              <span className="block text-white font-bold text-base sm:text-lg tracking-wide">
+              <span className="block text-white font-bold text-2xl sm:text-3xl tracking-wide" style={{ fontFamily: "var(--font-serif), Georgia, serif" }}>
                 APEC Canada
               </span>
-              <span className="block text-[#C8A24B] text-[11px] hidden sm:block">
+              <span className="block text-[#C8A24B] text-xs sm:text-sm font-medium hidden sm:block">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
