@@ -25,7 +25,7 @@ export default function EventsPage() {
       {/* Hero */}
       <section
         className="relative py-28 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #15604A 0%, #0E3D2E 60%, #0a2c1e 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0f1f5c 0%, #0a1645 60%, #060d38 100%)" }}
       >
         <div
           className="absolute inset-0 opacity-[0.06]"
@@ -38,7 +38,7 @@ export default function EventsPage() {
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">Events &amp; Programs</h1>
           <p className="text-xl text-gray-300">Stay connected. Keep growing. Make an impact.</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
+            <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
               <TicketIcon /> Buy Tickets on Showpass
             </a>
             <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
@@ -52,7 +52,7 @@ export default function EventsPage() {
       <section className="bg-[#F2E9D2] border-b border-[#C8A24B]/20 py-4">
         <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-[#4a5a52]">
           <div className="flex items-center gap-2">
-            <span className="text-[#15604A] font-bold">Powered by Showpass</span>
+            <span className="text-[#0f1f5c] font-bold">Powered by Showpass</span>
             <span>— secure, seamless ticketing for all APEC events.</span>
           </div>
           <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline font-medium">View all events on Showpass →</a>
@@ -62,7 +62,7 @@ export default function EventsPage() {
       {/* Upcoming Events */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#15604A] mb-10">Upcoming Events</h2>
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-10">Upcoming Events</h2>
 
           {/* BBQ Event Card */}
           <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
@@ -88,11 +88,11 @@ export default function EventsPage() {
                     <span className="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Family Friendly</span>
                   </div>
 
-                  <h3 className="text-3xl font-bold text-[#15604A] mb-3">APEC Annual BBQ 2026</h3>
+                  <h3 className="text-3xl font-bold text-[#0f1f5c] mb-3">APEC Annual BBQ 2026</h3>
 
                   <div className="space-y-3 text-[#4a5a52] text-sm mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-[#15604A]/10 flex items-center justify-center text-[#15604A] flex-shrink-0">
+                      <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                         </svg>
@@ -100,7 +100,7 @@ export default function EventsPage() {
                       <span className="font-medium">August 2026</span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-[#15604A]/10 flex items-center justify-center text-[#15604A] flex-shrink-0">
+                      <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
@@ -120,7 +120,7 @@ export default function EventsPage() {
                     href="https://www.showpass.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
                   >
                     <TicketIcon /> Get Tickets on Showpass
                   </a>
@@ -141,10 +141,10 @@ export default function EventsPage() {
       {/* Past events */}
       <section className="py-16 bg-[#F2E9D2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-[#15604A] mb-4">Missed a Past Event?</h2>
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-4">Missed a Past Event?</h2>
           <p className="text-[#4a5a52] mb-6">Browse our photo gallery or visit the Facebook group for photos, recordings, and recaps from previous events.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/gallery" className="inline-flex items-center gap-2 px-6 py-3 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">
+            <Link href="/gallery" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0a1645] transition-colors">
               View Photo Gallery →
             </Link>
             <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-semibold rounded-lg hover:bg-[#3a7bc8] transition-colors">

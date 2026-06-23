@@ -14,7 +14,7 @@ export default function TeamPage() {
       {/* Hero */}
       <section
         className="relative py-28 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #15604A 0%, #0E3D2E 60%, #0a2c1e 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0f1f5c 0%, #0a1645 60%, #060d38 100%)" }}
       >
         <div
           className="absolute inset-0 opacity-[0.06]"
@@ -35,14 +35,14 @@ export default function TeamPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {executives.map((exec) => (
               <div key={exec.name} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="relative h-48 bg-gradient-to-br from-[#0E3D2E] to-[#15604A] flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-[#C8A24B] flex items-center justify-center text-[#0E3D2E] text-2xl font-bold">
+                <div className="relative h-48 bg-gradient-to-br from-[#0a1645] to-[#0f1f5c] flex items-center justify-center">
+                  <div className="w-24 h-24 rounded-full bg-[#C8A24B] flex items-center justify-center text-[#0a1645] text-2xl font-bold">
                     {exec.name.split(" ").map((n: string) => n[0]).slice(0, 2).join("")}
                   </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-lg font-bold text-[#1D2621]">{exec.name}</h3>
-                  <p className="text-[#15604A] font-semibold text-sm mt-1">{exec.role}</p>
+                  <p className="text-[#0f1f5c] font-semibold text-sm mt-1">{exec.role}</p>
                   <p className="text-[#4a5a52] text-sm mt-3 leading-relaxed">{exec.desc}</p>
                 </div>
               </div>
@@ -54,7 +54,7 @@ export default function TeamPage() {
       {/* Governance note */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-[#15604A] mb-4">Governance Structure</h2>
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-4">Governance Structure</h2>
           <p className="text-[#4a5a52] leading-relaxed">
             The Executive Committee is elected every two years by regular and life members through a general election. All committee members must be registered as P.Eng. or EIT in Canada. No executive member receives remuneration for their service.
           </p>

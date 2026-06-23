@@ -182,7 +182,7 @@ export default function GalleryPage() {
       {/* Hero */}
       <section
         className="relative py-28 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #15604A 0%, #0E3D2E 60%, #0a2c1e 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0f1f5c 0%, #0a1645 60%, #060d38 100%)" }}
       >
         <div
           className="absolute inset-0 opacity-[0.06]"
@@ -206,11 +206,11 @@ export default function GalleryPage() {
       {/* CTA */}
       <section className="py-16 bg-[#F2E9D2]">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-[#15604A] mb-4">Be Part of Our Next Event</h2>
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-4">Be Part of Our Next Event</h2>
           <p className="text-[#4a5a52] mb-6">Join APEC and be in the next photo. Our events are open to all professionals.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/events" className="px-8 py-3.5 bg-[#15604A] text-white font-bold rounded-lg hover:bg-[#0E3D2E] transition-colors">View Upcoming Events</Link>
-            <Link href="/membership" className="px-8 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">Join APEC</Link>
+            <Link href="/events" className="px-8 py-3.5 bg-[#0f1f5c] text-white font-bold rounded-lg hover:bg-[#0a1645] transition-colors">View Upcoming Events</Link>
+            <Link href="/membership" className="px-8 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">Join APEC</Link>
           </div>
         </div>
       </section>

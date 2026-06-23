@@ -92,7 +92,7 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/membership" className="px-8 py-4 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">
+            <Link href="/membership" className="px-8 py-4 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">
               Join APEC Today
             </Link>
             <Link href="/about" className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg text-lg hover:bg-white/20 transition-colors border border-white/20">
@@ -128,10 +128,10 @@ export default function HomePage() {
           <div className="max-w-3xl mx-auto text-center">
             <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Who We Are</span>
             <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A] leading-tight">A Community Built on Connection and Purpose</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c] leading-tight">A Community Built on Connection and Purpose</h2>
             <p className="mt-5 text-[#4a5a52] leading-relaxed text-lg">Founded in Calgary in 2011, APEC Canada was created to support Pakistani-Canadian engineers navigating a new professional landscape. Today, we have grown into a vibrant, inclusive community that welcomes professionals from every culture, discipline, and background.</p>
             <p className="mt-4 text-[#4a5a52] leading-relaxed">We believe diverse perspectives strengthen communities. Our events, mentorship programs, and networking opportunities are open to anyone who shares our commitment to professional excellence and community service.</p>
-            <Link href="/about" className="mt-8 inline-block px-8 py-3.5 bg-[#15604A] text-white font-semibold rounded-lg hover:bg-[#0E3D2E] transition-colors">Learn More About Us</Link>
+            <Link href="/about" className="mt-8 inline-block px-8 py-3.5 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0a1645] transition-colors">Learn More About Us</Link>
           </div>
 
           {/* Decorative stat strip */}
@@ -154,16 +154,16 @@ export default function HomePage() {
       <section className="py-20 bg-[#4A90D9]/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A]">What We Offer</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c]">What We Offer</h2>
             <p className="mt-3 text-[#4a5a52] max-w-xl mx-auto">Practical support and meaningful connections for professionals at every stage.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((h, i) => (
-              <div key={h.title} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow border-l-4" style={{ borderLeftColor: i % 2 === 0 ? "#15604A" : "#4A90D9" }}>
-                <div className="w-11 h-11 p-2.5 rounded-lg mb-4" style={{ backgroundColor: i % 2 === 0 ? "rgba(21,96,74,0.1)" : "rgba(74,144,217,0.1)", color: i % 2 === 0 ? "#15604A" : "#4A90D9" }}>
+              <div key={h.title} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow border-l-4" style={{ borderLeftColor: i % 2 === 0 ? "#0f1f5c" : "#4A90D9" }}>
+                <div className="w-11 h-11 p-2.5 rounded-lg mb-4" style={{ backgroundColor: i % 2 === 0 ? "rgba(21,96,74,0.1)" : "rgba(74,144,217,0.1)", color: i % 2 === 0 ? "#0f1f5c" : "#4A90D9" }}>
                   {h.icon}
                 </div>
-                <h3 className="text-lg font-bold text-[#15604A] mb-2">{h.title}</h3>
+                <h3 className="text-lg font-bold text-[#0f1f5c] mb-2">{h.title}</h3>
                 <p className="text-[#4a5a52] text-sm leading-relaxed">{h.desc}</p>
               </div>
             ))}
@@ -176,10 +176,10 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Events &amp; Programs</span>
           <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A] leading-tight">Join Our Next Gathering</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c] leading-tight">Join Our Next Gathering</h2>
           <p className="mt-4 text-[#4a5a52] leading-relaxed text-lg max-w-2xl mx-auto">From technical seminars and P.Eng exam prep to cultural celebrations and community socials — our calendar is packed with meaningful events year-round. Ticketing powered by Showpass.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/events" className="px-8 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">View Upcoming Events</Link>
+            <Link href="/events" className="px-8 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">View Upcoming Events</Link>
             <Link href="/gallery" className="px-8 py-3.5 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0d3d7a] transition-colors text-lg">View Photo Gallery</Link>
           </div>
         </div>
@@ -187,13 +187,13 @@ export default function HomePage() {
 
       {/* CTA */}
       <section
-        className="py-20 bg-[#0E3D2E]"
+        className="py-20 bg-[#0a1645]"
         style={{ backgroundImage: "radial-gradient(#C8A24B22 1px, transparent 1px)", backgroundSize: "20px 20px" }}
       >
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Ready to Be Part of Something Bigger?</h2>
           <p className="text-gray-300 text-xl mb-8">Membership starts at just $10/year. Join a community that invests in your professional future.</p>
-          <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">Join APEC Today</Link>
+          <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">Join APEC Today</Link>
         </div>
       </section>
     </>

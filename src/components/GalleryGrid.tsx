@@ -62,7 +62,7 @@ export default function GalleryGrid({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-1 h-8 bg-[#C8A24B] rounded-full" />
-              <h2 className="text-3xl font-bold text-[#15604A]">{event.name}</h2>
+              <h2 className="text-3xl font-bold text-[#0f1f5c]">{event.name}</h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
               {event.photos.map((path, i) => {
@@ -87,7 +87,7 @@ export default function GalleryGrid({
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                       quality={60}
                     />
-                    <div className="absolute inset-0 bg-[#0E3D2E]/20 group-hover:bg-[#0E3D2E]/0 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-[#0a1645]/20 group-hover:bg-[#0a1645]/0 transition-colors duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                       <span className="bg-black/50 text-white rounded-full p-2.5">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 h-5">
@@ -118,7 +118,7 @@ export default function GalleryGrid({
                 type="button"
                 onClick={handleDownload}
                 disabled={downloading}
-                className="flex items-center gap-2 px-4 py-2 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-sm hover:bg-[#d4aa5a] transition-colors disabled:opacity-60"
+                className="flex items-center gap-2 px-4 py-2 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-sm hover:bg-[#d4aa5a] transition-colors disabled:opacity-60"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
