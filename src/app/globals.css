@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --green: #15604A;
-  --green-dark: #0E3D2E;
+  --green: #0f1f5c;
+  --green-dark: #0a1645;
   --gold: #C8A24B;
   --gold-light: #d4aa5a;
   --sand: #F2E9D2;
@@ -18,7 +18,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-  font-size: 114%;
+  font-size: 141%;
 }
 
 h1, h2 {

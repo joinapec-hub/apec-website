@@ -61,7 +61,7 @@ export default function HeroCarousel() {
           />
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0E3D2E]/93 to-[#15604A]/65" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0a1645]/93 to-[#0f1f5c]/65" />
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
@@ -76,7 +76,7 @@ export default function HeroCarousel() {
           APEC Canada is a non-profit community welcoming professionals from all backgrounds to network, grow, and make a lasting impact.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-all shadow-lg">
+          <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-all shadow-lg">
             Become a Member
           </Link>
           <Link href="/events" className="px-10 py-4 bg-[#4A90D9] text-white font-bold rounded-lg text-lg hover:bg-[#3a7bc8] transition-all shadow-lg">

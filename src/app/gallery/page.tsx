@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import GalleryGrid from "@/components/GalleryGrid";
 
 export const metadata: Metadata = {
   title: "Photo Gallery — APEC Canada",
@@ -14,7 +14,6 @@ const events = [
   {
     name: "Eid Gala 2026",
     photos: [
-      "2026/Eid%20Gala%202026/IMG_5718.jpeg",
       "2026/Eid%20Gala%202026/IMG_5719.jpeg",
       "2026/Eid%20Gala%202026/IMG_5720.jpeg",
       "2026/Eid%20Gala%202026/IMG_5721.jpeg",
@@ -31,6 +30,7 @@ const events = [
       "2026/Eid%20Gala%202026/IMG_5738.jpeg",
       "2026/Eid%20Gala%202026/IMG_5739.jpeg",
       "2026/Eid%20Gala%202026/IMG_5740.jpeg",
+      "2026/Eid%20Gala%202026/IMG_5718.jpeg",
     ],
   },
   {
@@ -182,7 +182,7 @@ export default function GalleryPage() {
       {/* Hero */}
       <section
         className="relative py-28 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #15604A 0%, #0E3D2E 60%, #0a2c1e 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0f1f5c 0%, #0a1645 60%, #060d38 100%)" }}
       >
         <div
           className="absolute inset-0 opacity-[0.06]"
@@ -200,44 +200,17 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery sections */}
-      {events.map((event, idx) => (
-        <section key={event.name} className={`py-16 border-b border-gray-100 last:border-0 ${idx % 2 === 0 ? "bg-white" : "bg-[#f8fafe]"}`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-1 h-8 bg-[#C8A24B] rounded-full" />
-              <h2 className="text-3xl font-bold text-[#15604A]">{event.name}</h2>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-              {event.photos.map((path, i) => (
-                <div key={i} className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer">
-                  <Image
-                    src={BASE + path}
-                    alt={`${event.name} — photo ${i + 1}`}
-                    fill
-                    loading="lazy"
-                    placeholder="blur"
-                    blurDataURL={BLUR}
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                    quality={60}
-                  />
-                  <div className="absolute inset-0 bg-[#0E3D2E]/20 group-hover:bg-[#0E3D2E]/0 transition-colors duration-300" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
+      {/* Gallery sections (click any photo to view full size & download) */}
+      <GalleryGrid events={events} base={BASE} blur={BLUR} />
 
       {/* CTA */}
       <section className="py-16 bg-[#F2E9D2]">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-[#15604A] mb-4">Be Part of Our Next Event</h2>
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-4">Be Part of Our Next Event</h2>
           <p className="text-[#4a5a52] mb-6">Join APEC and be in the next photo. Our events are open to all professionals.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/events" className="px-8 py-3.5 bg-[#15604A] text-white font-bold rounded-lg hover:bg-[#0E3D2E] transition-colors">View Upcoming Events</Link>
-            <Link href="/membership" className="px-8 py-3.5 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">Join APEC</Link>
+            <Link href="/events" className="px-8 py-3.5 bg-[#0f1f5c] text-white font-bold rounded-lg hover:bg-[#0a1645] transition-colors">View Upcoming Events</Link>
+            <Link href="/membership" className="px-8 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">Join APEC</Link>
           </div>
         </div>
       </section>

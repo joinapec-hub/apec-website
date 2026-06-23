@@ -80,7 +80,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section
         className="relative py-28 overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #15604A 0%, #0E3D2E 60%, #0a2c1e 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0f1f5c 0%, #0a1645 60%, #060d38 100%)" }}
       >
         <div
           className="absolute inset-0 opacity-[0.06]"
@@ -104,7 +104,7 @@ export default function AboutPage() {
             <div>
               <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Our Story</span>
               <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3" />
-              <h2 className="text-4xl font-bold text-[#15604A]">Where We Came From</h2>
+              <h2 className="text-4xl font-bold text-[#0f1f5c]">Where We Came From</h2>
               <p className="mt-4 text-[#4a5a52] leading-relaxed">
                 The Association of Pakistani Engineers in Canada (APEC) was founded in Calgary, Alberta in 2011 by a group of engineers who understood the challenges of building a professional career in a new country. They created APEC as a bridge — a place where newcomers could find mentors, and where established professionals could give back.
               </p>
@@ -125,7 +125,7 @@ export default function AboutPage() {
       {/* Mission / Vision */}
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-[#15604A] text-white rounded-2xl p-8">
+          <div className="bg-[#0f1f5c] text-white rounded-2xl p-8">
             <div className="mb-4 text-[#C8A24B]"><TargetIcon /></div>
             <h2 className="text-2xl font-bold text-[#C8A24B] mb-4">Our Mission</h2>
             <p className="leading-relaxed text-gray-200">
@@ -146,16 +146,16 @@ export default function AboutPage() {
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#15604A]">Our Values</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c]">Our Values</h2>
             <p className="mt-3 text-[#4a5a52]">The principles that guide everything we do.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((v) => (
               <div key={v.title} className="bg-white border-l-4 border-[#C8A24B] rounded-xl p-6 hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 p-2 bg-[#15604A]/10 rounded-lg text-[#15604A] mb-3">
+                <div className="w-10 h-10 p-2 bg-[#0f1f5c]/10 rounded-lg text-[#0f1f5c] mb-3">
                   {v.icon}
                 </div>
-                <h3 className="text-lg font-bold text-[#15604A] mb-2">{v.title}</h3>
+                <h3 className="text-lg font-bold text-[#0f1f5c] mb-2">{v.title}</h3>
                 <p className="text-[#4a5a52] text-sm leading-relaxed">{v.desc}</p>
               </div>
             ))}
@@ -166,7 +166,7 @@ export default function AboutPage() {
       {/* Objectives */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-[#15604A] mb-8 text-center">Our Objectives</h2>
+          <h2 className="text-4xl font-bold text-[#0f1f5c] mb-8 text-center">Our Objectives</h2>
           <ul className="space-y-4">
             {[
               "Create an environment for exchanging technical knowledge within the Code of Ethics of APEGA.",
@@ -178,7 +178,7 @@ export default function AboutPage() {
               "Promote the engineering profession and community engagement within diverse communities across Canada.",
             ].map((obj, i) => (
               <li key={i} className="flex gap-4 items-start bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#15604A] text-white flex items-center justify-center text-sm font-bold">{i + 1}</span>
+                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#0f1f5c] text-white flex items-center justify-center text-sm font-bold">{i + 1}</span>
                 <p className="text-[#4a5a52]">{obj}</p>
               </li>
             ))}
@@ -187,7 +187,7 @@ export default function AboutPage() {
       </section>
 
       {/* Non-affiliation */}
-      <section className="py-8 bg-[#0E3D2E]">
+      <section className="py-8 bg-[#0a1645]">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <p className="text-gray-300 text-sm">
             <strong className="text-[#C8A24B]">Important Notice:</strong> APEC Canada is a non-profit, non-partisan, non-religious, and non-political voluntary professional organization. APEC is not affiliated with or associated with any political party or government body.

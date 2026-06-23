@@ -28,38 +28,38 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 bg-[#0E3D2E] transition-shadow ${scrolled ? "shadow-lg" : ""}`}>
+    <header className={`sticky top-0 z-50 bg-[#0f1f5c] transition-shadow ${scrolled ? "shadow-xl" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-[72px]">
           {/* Logo + Name */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
               src="/apec-logo.png"
               alt="APEC Canada Logo"
               width={54}
               height={54}
-              className="rounded-full"
+              className="rounded-full ring-2 ring-[#C8A24B]/40 shadow-md"
               priority
             />
             <div className="leading-tight">
-              <span className="block text-white font-bold text-base sm:text-lg tracking-wide">
+              <span className="block text-white font-bold text-lg tracking-wide">
                 APEC Canada
               </span>
-              <span className="block text-[#C8A24B] text-[11px] hidden sm:block">
+              <span className="block text-[#C8A24B] text-[11px] hidden sm:block leading-tight">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-md text-base font-medium transition-colors ${
+                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                   pathname === link.href
-                    ? "bg-[#C8A24B] text-[#0E3D2E]"
+                    ? "bg-[#C8A24B] text-[#0f1f5c]"
                     : "text-gray-200 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -68,7 +68,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/membership"
-              className="ml-3 px-5 py-2.5 bg-[#4A90D9] text-white font-bold rounded-md text-base hover:bg-[#3a7bc8] transition-colors"
+              className="ml-2 px-4 py-2 bg-[#C8A24B] text-[#0f1f5c] font-bold rounded-md text-sm hover:bg-[#d4aa5a] transition-colors whitespace-nowrap"
             >
               Join Now
             </Link>
@@ -93,7 +93,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#15604A] border-t border-white/10 px-4 pb-4">
+        <div className="md:hidden bg-[#0a1645] border-t border-white/10 px-4 pb-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -101,7 +101,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={`block px-3 py-2 mt-1 rounded-md text-sm font-medium ${
                 pathname === link.href
-                  ? "bg-[#C8A24B] text-[#0E3D2E]"
+                  ? "bg-[#C8A24B] text-[#0f1f5c]"
                   : "text-gray-200 hover:bg-white/10"
               }`}
             >
@@ -111,7 +111,7 @@ export default function Navbar() {
           <Link
             href="/membership"
             onClick={() => setOpen(false)}
-            className="block mt-3 px-4 py-2 bg-[#C8A24B] text-[#0E3D2E] font-bold rounded-md text-sm text-center"
+            className="block mt-3 px-4 py-2 bg-[#C8A24B] text-[#0f1f5c] font-bold rounded-md text-sm text-center"
           >
             Join Now
           </Link>
