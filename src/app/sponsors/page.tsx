@@ -19,10 +19,11 @@ const currentSponsors = [
 ];
 
 const tiers = [
-  { name: "Platinum", price: "$5,000+/yr", perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "Banner at physical events"] },
-  { name: "Gold", price: "$2,500/yr", perks: ["Logo on sponsors page", "Social media mentions", "Access to all events", "Banner at major events"] },
-  { name: "Silver", price: "$1,000/yr", perks: ["Logo on website", "Social media mention", "Event access passes"] },
-  { name: "Community", price: "$500/yr", perks: ["Website mention", "Certificate of appreciation"] },
+  { name: "Platinum", price: "$6,000/yr", perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "Banner at physical events"] },
+  { name: "Gold", price: "$4,000/yr", perks: ["Logo on sponsors page", "Social media mentions", "Access to all events", "Banner at major events"] },
+  { name: "Silver", price: "$2,000/yr", perks: ["Logo on website", "Social media mention", "Event access passes"] },
+  { name: "Community", price: "$1,000/yr", perks: ["Website mention", "Certificate of appreciation"] },
+  { name: "General", price: "$100–$400/yr", perks: ["Name listed on our website", "Certificate of appreciation"] },
 ];
 
 function PersonIcon() {
@@ -126,14 +127,14 @@ export default function SponsorsPage() {
 
       {/* Sponsorship tiers */}
       <section className="py-20 bg-[#F2E9D2]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#0f1f5c]">Become a Sponsor</h2>
             <p className="mt-2 text-[#4a5a52] max-w-xl mx-auto">
               Align your brand with a trusted professional community and gain visibility among hundreds of engineers and tech professionals.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {tiers.map((tier) => (
               <div key={tier.name} className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
                 <h3 className="text-lg font-bold text-[#0f1f5c] mb-1">{tier.name}</h3>
