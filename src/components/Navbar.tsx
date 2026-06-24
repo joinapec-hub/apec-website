@@ -45,19 +45,19 @@ export default function Navbar() {
               <span className="block text-white font-bold text-lg tracking-wide">
                 APEC Canada
               </span>
-              <span className="block text-[#C8A24B] text-[11px] hidden sm:block leading-tight">
+              <span className="block text-[#C8A24B] text-[11px] hidden sm:block xl:hidden 2xl:block leading-tight">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-0.5">
+          <nav className="hidden xl:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                className={`px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                   pathname === link.href
                     ? "bg-[#C8A24B] text-[#0f1f5c]"
                     : "text-gray-200 hover:bg-white/10 hover:text-white"
@@ -76,7 +76,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-white p-2"
+            className="xl:hidden text-white p-2"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -93,7 +93,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0a1645] border-t border-white/10 px-4 pb-4">
+        <div className="xl:hidden bg-[#0a1645] border-t border-white/10 px-4 pb-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
