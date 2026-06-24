@@ -74,6 +74,107 @@ function EyeIcon() {
   );
 }
 
+// Statistics Canada — "A Canada–U.S. Comparison of the Economic Outcomes of STEM Immigrants"
+const STATCAN_SOURCE = "https://www150.statcan.gc.ca/n1/pub/11f0019m/11f0019m2020016-eng.htm";
+
+type Stat = {
+  eyebrow: string;
+  value: string;
+  suffix?: string;
+  title: string;
+  desc: string;
+  sourced?: boolean;
+};
+
+const needStats: Stat[] = [
+  {
+    eyebrow: "Underused Talent",
+    value: "50",
+    suffix: "%+",
+    title: "STEM immigrants in non-STEM jobs",
+    desc: "More than half of STEM-educated immigrants in Canada work outside STEM fields — a gap APEC helps close through mentorship and networking.",
+    sourced: true,
+  },
+  {
+    eyebrow: "Engineers Underemployed",
+    value: "13",
+    suffix: "%",
+    title: "Reach a degree-level role",
+    desc: "Of immigrant engineers who can't find STEM work, only 13% land a job that even requires a university degree.",
+    sourced: true,
+  },
+  {
+    eyebrow: "Earnings Gap",
+    value: "26",
+    suffix: "%",
+    title: "Lower pay than peers",
+    desc: "STEM-educated immigrants earn about 26% less, on average, than their Canadian-born counterparts.",
+    sourced: true,
+  },
+];
+
+const communityStats: Stat[] = [
+  {
+    eyebrow: "Members",
+    value: "200",
+    suffix: "+",
+    title: "Engineers & professionals",
+    desc: "A growing network spanning disciplines and backgrounds across Canada.",
+  },
+  {
+    eyebrow: "Events Hosted",
+    value: "50",
+    suffix: "+",
+    title: "Seminars, workshops & socials",
+    desc: "Knowledge-sharing and networking opportunities delivered for the community since 2011.",
+  },
+  {
+    eyebrow: "Years of Service",
+    value: "10",
+    suffix: "+",
+    title: "Supporting newcomers",
+    desc: "Founded in Calgary in 2011 to help engineers build their careers in Canada.",
+  },
+];
+
+function StatCard({ stat, accent }: { stat: Stat; accent: string }) {
+  return (
+    <div className="bg-white rounded-xl shadow-sm border-t-4 p-6 flex flex-col" style={{ borderTopColor: accent }}>
+      <p className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>{stat.eyebrow}</p>
+      <p className="font-serif text-5xl font-bold text-[#0f1f5c] leading-none">
+        {stat.value}
+        <span style={{ color: accent }}>{stat.suffix}</span>
+      </p>
+      <h3 className="mt-3 font-bold text-[#1D2621]">{stat.title}</h3>
+      <p className="mt-1 text-sm text-[#4a5a52] leading-relaxed flex-1">{stat.desc}</p>
+      {stat.sourced && (
+        <p className="mt-3 text-[11px] text-gray-400">
+          Source:{" "}
+          <a href={STATCAN_SOURCE} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#4A90D9]">
+            Statistics Canada
+          </a>
+        </p>
+      )}
+    </div>
+  );
+}
+
+function StatBand({ label, accent, stats }: { label: string; accent: string; stats: Stat[] }) {
+  return (
+    <div>
+      <div className="flex items-center gap-3 mb-6">
+        <span className="w-8 h-0.5 rounded-full" style={{ background: accent }} />
+        <span className="text-sm font-bold uppercase tracking-widest" style={{ color: accent }}>{label}</span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {stats.map((s) => (
+          <StatCard key={s.eyebrow} stat={s} accent={accent} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function AboutPage() {
   return (
     <>
@@ -138,6 +239,24 @@ export default function AboutPage() {
             <p className="leading-relaxed text-blue-50">
               A Canada where every engineer and technically-minded professional — regardless of origin, ethnicity, or background — has the networks, mentorship, and opportunities they need to thrive and contribute.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Impact & the need */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">By the Numbers</span>
+            <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c]">Our Impact &amp; the Need We Serve</h2>
+            <p className="mt-3 text-[#4a5a52] max-w-2xl mx-auto">
+              Internationally trained engineers face real barriers in Canada. APEC exists to help bridge that gap — here is the challenge, and the community we&apos;ve built to meet it.
+            </p>
+          </div>
+          <div className="space-y-12">
+            <StatBand label="The Need We Serve" accent="#4A90D9" stats={needStats} />
+            <StatBand label="Our Community" accent="#C8A24B" stats={communityStats} />
           </div>
         </div>
       </section>
