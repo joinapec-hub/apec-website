@@ -5,7 +5,6 @@ const stats = [
   { value: "200+", label: "Members" },
   { value: "10+", label: "Years Active" },
   { value: "50+", label: "Events Hosted" },
-  { value: "7", label: "Executive Members" },
 ];
 
 const highlights = [
@@ -83,7 +82,7 @@ export default function HomePage() {
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-            Connecting Pakistani<br />
+            Connecting<br />
             <span className="text-[#C8A24B]">Engineers</span> Across Canada
           </h1>
 
@@ -112,7 +111,7 @@ export default function HomePage() {
 
       {/* Stats */}
       <section className="bg-[#0f1f5c] py-14">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-3 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="pl-5 border-l-4 border-[#C8A24B]">
               <p className="text-white text-5xl font-bold">{s.value}</p>
@@ -131,6 +130,7 @@ export default function HomePage() {
             <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c] leading-tight">A Community Built on Connection and Purpose</h2>
             <p className="mt-5 text-[#4a5a52] leading-relaxed text-lg">Founded in Calgary in 2011, APEC Canada was created to support Pakistani-Canadian engineers navigating a new professional landscape. Today, we have grown into a vibrant, inclusive community that welcomes professionals from every culture, discipline, and background.</p>
             <p className="mt-4 text-[#4a5a52] leading-relaxed">We believe diverse perspectives strengthen communities. Our events, mentorship programs, and networking opportunities are open to anyone who shares our commitment to professional excellence and community service.</p>
+            <p className="mt-4 text-[#4a5a52] leading-relaxed">We have professional engineers and professional project management specialists in our APEC community.</p>
             <Link href="/about" className="mt-8 inline-block px-8 py-3.5 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0a1645] transition-colors">Learn More About Us</Link>
           </div>
 
@@ -193,7 +193,10 @@ export default function HomePage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">Ready to Be Part of Something Bigger?</h2>
           <p className="text-gray-300 text-xl mb-8">Membership starts at just $10/year. Join a community that invests in your professional future.</p>
-          <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">Join APEC Today</Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-colors shadow-lg">Join APEC Today</Link>
+            <a href="https://chat.whatsapp.com/Ju7iSnLwYniA8dTZnKbrIJ" target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg text-lg hover:bg-white/20 transition-colors border border-white/20">Join WhatsApp Group</a>
+          </div>
         </div>
       </section>
     </>

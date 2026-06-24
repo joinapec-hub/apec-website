@@ -21,7 +21,7 @@ export default function Footer() {
             <p className="mt-3 text-xs text-gray-400 italic">
               APEC is not affiliated with or associated with any political party or government.
             </p>
-            <div className="flex gap-4 mt-4">
+            <div className="flex flex-wrap gap-x-5 gap-y-2 mt-4">
               <a
                 href="https://www.facebook.com/groups/781259795220477/"
                 target="_blank"
@@ -29,6 +29,14 @@ export default function Footer() {
                 className="text-[#C8A24B] hover:text-[#d4aa5a] transition-colors text-sm font-medium"
               >
                 Facebook Group →
+              </a>
+              <a
+                href="https://chat.whatsapp.com/Ju7iSnLwYniA8dTZnKbrIJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C8A24B] hover:text-[#d4aa5a] transition-colors text-sm font-medium"
+              >
+                WhatsApp Group →
               </a>
             </div>
           </div>

@@ -169,13 +169,12 @@ export default function AboutPage() {
           <h2 className="text-4xl font-bold text-[#0f1f5c] mb-8 text-center">Our Objectives</h2>
           <ul className="space-y-4">
             {[
-              "Create an environment for exchanging technical knowledge within the Code of Ethics of APEGA.",
-              "Promote the engineering profession and professional development through training and networking.",
-              "Support engineers in obtaining their Professional Engineer (P.Eng.) license in Canada.",
-              "Foster technical cooperation with other engineering and technical societies across Canada.",
-              "Assist Pakistani engineers across provinces and territories in forming local APEC branches.",
-              "Provide career development support to engineering students, fresh graduates, and newly immigrated engineers.",
               "Promote the engineering profession and community engagement within diverse communities across Canada.",
+              "Provide career development support to engineering students, fresh graduates, and newly immigrated engineers.",
+              "Assist engineers across provinces and territories in forming local APEC branches.",
+              "Foster technical cooperation with other engineering and technical societies across Canada.",
+              "Support engineers in obtaining their Professional Engineer (P.Eng.) license in Canada.",
+              "Promote the engineering profession and professional development through training and networking.",
             ].map((obj, i) => (
               <li key={i} className="flex gap-4 items-start bg-white rounded-xl p-4 shadow-sm border border-gray-100">
                 <span className="flex-shrink-0 w-7 h-7 rounded-full bg-[#0f1f5c] text-white flex items-center justify-center text-sm font-bold">{i + 1}</span>
