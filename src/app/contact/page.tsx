@@ -74,7 +74,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-[#0f1f5c]">Email</p>
-                    <a href="mailto:joinapec@gmail.com" className="text-[#4A90D9] hover:underline text-sm">joinapec@gmail.com</a>
+                    <a href="mailto:info@apecanada.ca" className="text-[#4A90D9] hover:underline text-sm">info@apecanada.ca</a>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
@@ -141,7 +141,7 @@ export default function ContactPage() {
                     <textarea name="message" value={form.message} onChange={handleChange} required rows={5} className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0f1f5c] focus:border-[#0f1f5c] resize-none" placeholder="How can we help you?" />
                   </div>
                   {status === "error" && (
-                    <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-4 py-2">Something went wrong. Please email us directly at <a href="mailto:joinapec@gmail.com" className="underline">joinapec@gmail.com</a>.</p>
+                    <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-4 py-2">Something went wrong. Please email us directly at <a href="mailto:info@apecanada.ca" className="underline">info@apecanada.ca</a>.</p>
                   )}
                   <button type="submit" disabled={status === "sending"} className="w-full py-3 bg-[#0f1f5c] text-white font-bold rounded-lg hover:bg-[#0a1645] transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
                     {status === "sending" ? "Sending…" : "Send Message"}

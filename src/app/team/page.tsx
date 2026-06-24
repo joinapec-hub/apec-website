@@ -111,7 +111,7 @@ export default function TeamPage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-[#0f1f5c] mb-4">Governance Structure</h2>
           <p className="text-[#4a5a52] leading-relaxed">
-            The Executive Committee is elected every two years by regular and life members through a general election. All committee members must be registered as P.Eng. or EIT in Canada. No executive member receives remuneration for their service.
+            The Executive Committee is elected by regular and life members through a general election.
           </p>
           <p className="mt-3 text-[#4a5a52] leading-relaxed">
             Elections are overseen by an independent three-member Election Commission to ensure fairness and transparency.

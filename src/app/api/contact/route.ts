@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
   const { error } = await resend.emails.send({
     from: "APEC Contact Form <onboarding@resend.dev>",
-    to: ["joinapec@gmail.com"],
+    to: ["info@apecanada.ca"],
     replyTo: email,
     subject: `APEC Contact: ${subject}`,
     text: `From: ${firstName} ${lastName} <${email}>\nSubject: ${subject}\n\n${message}`,
