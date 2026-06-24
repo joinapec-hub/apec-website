@@ -50,7 +50,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero — full-bleed background photo */}
-      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-28 sm:py-24">
         <Image
           src="https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Assets/APEC%20Background%20photo.jpeg"
           alt="APEC Canada background"
@@ -101,7 +101,7 @@ export default function HomePage() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/50 text-xs">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1 text-white/50 text-xs">
           <span>Scroll</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 animate-bounce">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
