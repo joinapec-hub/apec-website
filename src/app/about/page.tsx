@@ -141,7 +141,7 @@ function StatCard({ stat, accent }: { stat: Stat; accent: string }) {
   return (
     <div className="bg-white rounded-xl shadow-sm border-t-4 p-6 flex flex-col" style={{ borderTopColor: accent }}>
       <p className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: accent }}>{stat.eyebrow}</p>
-      <p className="font-serif text-5xl font-bold text-[#0f1f5c] leading-none">
+      <p className="text-5xl font-bold text-[#0f1f5c] leading-none" style={{ fontFamily: "var(--font-serif), Georgia, serif" }}>
         {stat.value}
         <span style={{ color: accent }}>{stat.suffix}</span>
       </p>

@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           {/* Logo */}
           <div className="flex justify-center mb-6">
-            <Image src="/apec-logo.png" alt="APEC Canada" width={96} height={96} className="rounded-full shadow-2xl ring-4 ring-[#C8A24B]/40" />
+            <Image src="/apec-logo.png" alt="APEC Canada" width={176} height={176} className="h-32 w-32 sm:h-40 sm:w-40 lg:h-44 lg:w-44 rounded-full shadow-2xl ring-4 ring-[#C8A24B]/40" />
           </div>
 
           <div className="inline-block px-4 py-1 mb-4 rounded-full border border-[#C8A24B]/50 text-[#C8A24B] text-sm font-semibold tracking-widest uppercase">
