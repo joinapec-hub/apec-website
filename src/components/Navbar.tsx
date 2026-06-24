@@ -42,10 +42,7 @@ export default function Navbar() {
               priority
             />
             <div className="leading-tight">
-              <span className="block text-white font-bold text-2xl leading-tight tracking-wide">
-                APEC
-              </span>
-              <span className="block text-[#C8A24B] text-sm hidden sm:block max-w-[260px] leading-tight">
+              <span className="block text-white font-bold text-base max-w-[280px] leading-tight tracking-wide">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
