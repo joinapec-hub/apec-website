@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <header className={`sticky top-0 z-50 bg-[#0f1f5c] transition-shadow ${scrolled ? "shadow-xl" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[96px]">
+        <div className="flex items-center justify-between h-[104px]">
           {/* Logo + Name */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
@@ -42,10 +42,10 @@ export default function Navbar() {
               priority
             />
             <div className="leading-tight">
-              <span className="block text-white font-bold text-2xl tracking-wide">
+              <span className="block text-white font-bold text-2xl leading-tight tracking-wide">
                 APEC
               </span>
-              <span className="block text-[#C8A24B] text-sm hidden sm:block max-w-[220px] leading-tight">
+              <span className="block text-[#C8A24B] text-sm hidden sm:block max-w-[260px] leading-tight">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
@@ -57,7 +57,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                className={`px-2 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                   pathname === link.href
                     ? "bg-[#C8A24B] text-[#0f1f5c]"
                     : "text-gray-200 hover:bg-white/10 hover:text-white"
