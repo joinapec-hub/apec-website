@@ -8,15 +8,15 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
-  title: "APEC Canada – Association of Pakistani Engineers in Canada",
+  title: "APEC – Association of Pakistani Engineers in Canada",
   description:
-    "APEC Canada is a non-profit professional community welcoming engineers and professionals from all backgrounds. Connect, grow, and contribute to Canada.",
+    "APEC is a non-profit professional community welcoming engineers and professionals from all backgrounds. Connect, grow, and contribute to Canada.",
   keywords: ["APEC", "Pakistani Engineers", "Canada", "Calgary", "engineering", "professional development", "networking"],
   openGraph: {
-    title: "APEC Canada",
+    title: "APEC",
     description: "Engineers & Professionals Building a Stronger Canada Together",
     url: "https://www.apecanada.ca",
-    siteName: "APEC Canada",
+    siteName: "APEC",
     locale: "en_CA",
     type: "website",
   },

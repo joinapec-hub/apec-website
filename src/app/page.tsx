@@ -42,7 +42,7 @@ const highlights = [
       </svg>
     ),
     title: "Career Development",
-    desc: "Get guidance on Canadian licensure, job markets, and professional certifications.",
+    desc: "Get guidance on the Canadian job market, certifications, and growing your career.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function HomePage() {
       <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-28 sm:py-24">
         <Image
           src="https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Assets/APEC%20Background%20photo.jpeg"
-          alt="APEC Canada background"
+          alt="APEC background"
           fill
           priority
           quality={85}
@@ -74,7 +74,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           {/* Logo */}
           <div className="flex justify-center mb-6">
-            <Image src="/apec-logo.png" alt="APEC Canada" width={176} height={176} className="h-32 w-32 sm:h-40 sm:w-40 lg:h-44 lg:w-44 rounded-full shadow-2xl ring-4 ring-[#C8A24B]/40" />
+            <Image src="/apec-logo.png" alt="APEC" width={176} height={176} className="h-32 w-32 sm:h-40 sm:w-40 lg:h-44 lg:w-44 rounded-full shadow-2xl ring-4 ring-[#C8A24B]/40" />
           </div>
 
           <div className="inline-block px-4 py-1 mb-4 rounded-full border border-[#C8A24B]/50 text-[#C8A24B] text-sm font-semibold tracking-widest uppercase">
@@ -128,9 +128,10 @@ export default function HomePage() {
             <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Who We Are</span>
             <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
             <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c] leading-tight">A Community Built on Connection and Purpose</h2>
-            <p className="mt-5 text-[#4a5a52] leading-relaxed text-lg">Founded in Calgary in 2011, APEC Canada was created to support Pakistani-Canadian engineers navigating a new professional landscape. Today, we have grown into a vibrant, inclusive community that welcomes professionals from every culture, discipline, and background.</p>
+            <p className="mt-5 text-[#4a5a52] leading-relaxed text-lg">Founded in Calgary in 2011, APEC was created to support Pakistani-Canadian engineers navigating a new professional landscape. Today, we have grown into a vibrant, inclusive community that welcomes professionals from every culture, discipline, and background.</p>
             <p className="mt-4 text-[#4a5a52] leading-relaxed">We believe diverse perspectives strengthen communities. Our events, mentorship programs, and networking opportunities are open to anyone who shares our commitment to professional excellence and community service.</p>
-            <p className="mt-4 text-[#4a5a52] leading-relaxed">We have professional engineers and professional project management specialists in our APEC community.</p>
+            <p className="mt-4 text-[#4a5a52] leading-relaxed">Our community brings together engineers and technical professionals of every discipline — from software and IT specialists to project management professionals and beyond.</p>
+            <p className="mt-4 text-[#4a5a52] leading-relaxed">Engineers of Pakistani origin and other internationally trained engineers are all welcome to join APEC and benefit from our community.</p>
             <Link href="/about" className="mt-8 inline-block px-8 py-3.5 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0a1645] transition-colors">Learn More About Us</Link>
           </div>
 
@@ -177,7 +178,7 @@ export default function HomePage() {
           <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Events &amp; Programs</span>
           <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
           <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c] leading-tight">Join Our Next Gathering</h2>
-          <p className="mt-4 text-[#4a5a52] leading-relaxed text-lg max-w-2xl mx-auto">From technical seminars and P.Eng exam prep to cultural celebrations and community socials — our calendar is packed with meaningful events year-round. Ticketing powered by Showpass.</p>
+          <p className="mt-4 text-[#4a5a52] leading-relaxed text-lg max-w-2xl mx-auto">From technical seminars and career development sessions to cultural celebrations and community socials — our calendar is packed with meaningful events year-round. Ticketing powered by Showpass.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/events" className="px-8 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">View Upcoming Events</Link>
             <Link href="/gallery" className="px-8 py-3.5 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0d3d7a] transition-colors text-lg">View Photo Gallery</Link>

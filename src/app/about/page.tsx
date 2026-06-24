@@ -191,7 +191,7 @@ export default function AboutPage() {
           }}
         />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6">About APEC Canada</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">About APEC</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             A professional community rooted in shared values — and open to all who share them.
           </p>
@@ -292,7 +292,7 @@ export default function AboutPage() {
               "Provide career development support to engineering students, fresh graduates, and newly immigrated engineers.",
               "Assist engineers across provinces and territories in forming local APEC branches.",
               "Foster technical cooperation with other engineering and technical societies across Canada.",
-              "Support engineers in obtaining their Professional Engineer (P.Eng.) license in Canada.",
+              "Support engineers and technical professionals in advancing their careers and credentials in Canada.",
               "Promote the engineering profession and professional development through training and networking.",
             ].map((obj, i) => (
               <li key={i} className="flex gap-4 items-start bg-white rounded-xl p-4 shadow-sm border border-gray-100">
@@ -308,7 +308,7 @@ export default function AboutPage() {
       <section className="py-8 bg-[#0a1645]">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <p className="text-gray-300 text-sm">
-            <strong className="text-[#C8A24B]">Important Notice:</strong> APEC Canada is a non-profit, non-partisan, non-religious, and non-political voluntary professional organization. APEC is not affiliated with or associated with any political party or government body.
+            <strong className="text-[#C8A24B]">Important Notice:</strong> APEC is a non-profit, non-partisan, non-religious, and non-political voluntary professional organization. APEC is not affiliated with or associated with any political party or government body.
           </p>
         </div>
       </section>

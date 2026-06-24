@@ -13,7 +13,7 @@ const executives: Person[] = [
   { name: "Salman Ali Mumtaz", role: "General Secretary", desc: "Manages communications, meeting minutes, and organizational coordination.", photo: "/team/salman-mumtaz.jpg" },
   { name: "Usama Cheema", role: "Director Finance / Treasurer", desc: "Maintains financial records, prepares budgets, and files annual tax returns.", photo: "/team/usama-cheema.jpg" },
   { name: "Asad Kamal", role: "Director Event Coordinator", desc: "Plans and organizes logistics for all organizational, social, and professional events.", photo: "/team/asad-kamal.jpg" },
-  { name: "Usman Choudhary", role: "Director Professional Membership & Career Development", desc: "Guides members on professional licensure, certifications, and career growth in Canada.", photo: "/team/usman-choudhary.png" },
+  { name: "Usman Choudhary", role: "Director Membership & Career Development", desc: "Guides members on certifications, career development, and professional growth in Canada.", photo: "/team/usman-choudhary.png" },
   { name: "Majid Tariq", role: "Director Recreational & Social Program", desc: "Organizes recreational and social activities for the wellbeing of members and families." },
 ];
 
@@ -28,7 +28,7 @@ function initials(name: string) {
 function PersonCard({ person }: { person: Person }) {
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-shadow">
-      <div className="relative h-72 bg-gradient-to-br from-[#0a1645] to-[#0f1f5c]">
+      <div className="relative aspect-[4/5] bg-gradient-to-br from-[#0a1645] to-[#0f1f5c]">
         {person.photo ? (
           <Image
             src={person.photo}
@@ -72,7 +72,7 @@ export default function TeamPage() {
         />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">Executive Team</h1>
-          <p className="text-xl text-gray-300">Meet the dedicated professionals leading APEC Canada.</p>
+          <p className="text-xl text-gray-300">Meet the dedicated professionals leading APEC.</p>
         </div>
       </section>
 

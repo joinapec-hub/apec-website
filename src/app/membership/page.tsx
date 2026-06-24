@@ -77,7 +77,7 @@ export default function MembershipPage() {
           }}
         />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6">Join APEC Canada</h1>
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6">Join APEC</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Membership unlocks a network of professionals, events, mentorship, and career support — all for as little as $10/year.
           </p>
@@ -87,6 +87,11 @@ export default function MembershipPage() {
       {/* Tiers */}
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto mb-10 bg-white border-l-4 border-[#C8A24B] rounded-xl p-5 text-center shadow-sm">
+            <p className="text-[#4a5a52] leading-relaxed">
+              Engineers of Pakistani origin and other internationally trained engineers — across every discipline, including software and IT — are all welcome to join APEC and benefit from our community.
+            </p>
+          </div>
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#0f1f5c]">Membership Tiers</h2>
             <p className="mt-2 text-[#4a5a52]">Choose the membership that fits your stage of career.</p>
@@ -156,7 +161,7 @@ export default function MembershipPage() {
               "All members have the right to attend general body meetings.",
               "Membership is renewed annually for regular members; fees are non-refundable.",
               "Members who withdraw may do so by notifying the Secretary in writing.",
-              "Members are expected to abide by APEC's bylaws and the Code of Ethics of APEGA.",
+              "Members are expected to abide by APEC's bylaws and a shared code of professional conduct and ethics.",
             ].map((r, i) => (
               <li key={i} className="flex gap-3 items-start bg-white rounded-lg p-4 shadow-sm">
                 <CheckIcon />

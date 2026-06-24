@@ -1,8 +1,10 @@
 import Link from "next/link";
 
+// rank determines display order: 1 = Platinum (top), 4 = Community (bottom)
 const currentSponsors = [
   {
-    tier: "Gold Sponsor",
+    rank: 4,
+    tier: "Community Sponsor",
     name: "FastSigns Downtown Calgary",
     tagline: "Professional Signage & Visual Communications",
     director: "Salman Ali Mumtaz",
@@ -10,9 +12,9 @@ const currentSponsors = [
     phone: "403-775-6633",
     email: "2189@fastsigns.com",
     website: "https://www.fastsigns.com",
-    desc: "FastSigns Downtown Calgary is our proud website sponsor. They provide high-quality signage, banners, and visual communications solutions for businesses across Calgary. Their expertise and community support make a real difference for organizations like APEC.",
-    color: "border-[#C8A24B] bg-[#C8A24B]/5",
-    badgeColor: "bg-[#C8A24B] text-[#0a1645]",
+    desc: "FastSigns Downtown Calgary is a proud community sponsor of APEC. They provide high-quality signage, banners, and visual communications solutions for businesses across Calgary. Their expertise and community support make a real difference for organizations like APEC.",
+    color: "border-[#4A90D9] bg-[#4A90D9]/5",
+    badgeColor: "bg-[#4A90D9] text-white",
   },
 ];
 
@@ -82,7 +84,7 @@ export default function SponsorsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">Our Sponsors</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Sponsoring APEC Canada means investing in a community of skilled professionals who are building a stronger Canada.
+            Sponsoring APEC means investing in a community of skilled professionals who are building a stronger Canada.
           </p>
         </div>
       </section>
@@ -90,8 +92,10 @@ export default function SponsorsPage() {
       {/* Current Sponsors */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-8 text-center">Current Sponsors</h2>
-          {currentSponsors.map((sponsor) => (
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-3 text-center">Current Sponsors</h2>
+          <p className="text-[#4a5a52] text-sm text-center mb-8 max-w-2xl mx-auto">Sponsors are featured by tier — Platinum partners are showcased first, followed by Gold, Silver, and Community sponsors.</p>
+          <div className="space-y-6">
+          {[...currentSponsors].sort((a, b) => a.rank - b.rank).map((sponsor) => (
             <div key={sponsor.name} className={`border-2 ${sponsor.color} rounded-2xl p-8`}>
               <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                 <div>
@@ -116,6 +120,7 @@ export default function SponsorsPage() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </section>
 

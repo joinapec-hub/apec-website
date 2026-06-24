@@ -3,12 +3,12 @@ import type { Metadata } from "next";
 import GalleryGrid from "@/components/GalleryGrid";
 
 export const metadata: Metadata = {
-  title: "Photo Gallery — APEC Canada",
-  description: "Browse photos from APEC Canada events — galas, networking mixers, workshops, and community celebrations.",
+  title: "Photo Gallery — APEC",
+  description: "Browse photos from APEC events — galas, networking mixers, workshops, and community celebrations.",
 };
 
 const BASE = "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Event%20Photos/";
-const BLUR = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
+const BLUR = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGN4//IWAAV9ArPB0Os9AAAAAElFTkSuQmCC";
 
 const events = [
   {

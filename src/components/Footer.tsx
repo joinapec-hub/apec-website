@@ -11,7 +11,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <Image src="/apec-logo.png" alt="APEC Logo" width={48} height={48} className="rounded-full" />
               <div>
-                <p className="text-white font-bold text-lg">APEC Canada</p>
+                <p className="text-white font-bold text-lg">APEC</p>
                 <p className="text-[#C8A24B] text-xs">Association of Pakistani Engineers in Canada</p>
               </div>
             </div>

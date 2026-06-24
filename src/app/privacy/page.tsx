@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Privacy Policy – APEC Canada",
+  title: "Privacy Policy – APEC",
 };
 
 export default function PrivacyPage() {

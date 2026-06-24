@@ -54,7 +54,7 @@ export default function HeroCarousel() {
             priority={i === 0}
             loading={i === 0 ? "eager" : undefined}
             placeholder={i !== 0 ? "blur" : undefined}
-            blurDataURL={i !== 0 ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" : undefined}
+            blurDataURL={i !== 0 ? "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGPgEnMFAACTAGZTRuOZAAAAAElFTkSuQmCC" : undefined}
             className="object-cover object-center"
             sizes="100vw"
             quality={70}
@@ -73,7 +73,7 @@ export default function HeroCarousel() {
           <span className="text-[#C8A24B]">Building Canada Together</span>
         </h1>
         <p className="text-xl sm:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">
-          APEC Canada is a non-profit community welcoming professionals from all backgrounds to network, grow, and make a lasting impact.
+          APEC is a non-profit community welcoming professionals from all backgrounds to network, grow, and make a lasting impact.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
           <Link href="/membership" className="px-10 py-4 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-lg hover:bg-[#d4aa5a] transition-all shadow-lg">

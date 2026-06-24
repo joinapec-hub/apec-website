@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Terms of Service – APEC Canada",
+  title: "Terms of Service – APEC",
 };
 
 export default function TermsPage() {
@@ -13,12 +13,12 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[#0f1f5c] mb-2">1. Acceptance of Terms</h2>
-            <p>By accessing or using the APEC Canada website (www.apecanada.ca) and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our website.</p>
+            <p>By accessing or using the APEC website (www.apecanada.ca) and services, you agree to be bound by these Terms of Service. If you do not agree, please do not use our website.</p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-[#0f1f5c] mb-2">2. About APEC Canada</h2>
-            <p>APEC Canada (Association of Pakistani Engineers in Canada) is a non-profit, non-partisan, non-religious, and non-political voluntary professional organization based in Calgary, Alberta. APEC is not affiliated with or associated with any political party or government body.</p>
+            <h2 className="text-lg font-bold text-[#0f1f5c] mb-2">2. About APEC</h2>
+            <p>APEC (Association of Pakistani Engineers in Canada) is a non-profit, non-partisan, non-religious, and non-political voluntary professional organization based in Calgary, Alberta. APEC is not affiliated with or associated with any political party or government body.</p>
           </section>
 
           <section>
@@ -33,12 +33,12 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[#0f1f5c] mb-2">5. Intellectual Property</h2>
-            <p>All content on this website — including the APEC logo, text, and images — is the property of APEC Canada. You may not reproduce, distribute, or use any content without prior written permission.</p>
+            <p>All content on this website — including the APEC logo, text, and images — is the property of APEC. You may not reproduce, distribute, or use any content without prior written permission.</p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-[#0f1f5c] mb-2">6. Limitation of Liability</h2>
-            <p>APEC Canada is not liable for any direct, indirect, or consequential damages arising from use of our website or services. We provide information &quot;as is&quot; without warranty of any kind.</p>
+            <p>APEC is not liable for any direct, indirect, or consequential damages arising from use of our website or services. We provide information &quot;as is&quot; without warranty of any kind.</p>
           </section>
 
           <section>
