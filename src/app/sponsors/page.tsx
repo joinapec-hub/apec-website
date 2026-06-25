@@ -20,11 +20,11 @@ const currentSponsors = [
 
 // accent colours create a visual hierarchy: green (top/premier) → blue (community) → grey (entry)
 const tiers = [
-  { name: "Platinum", price: "$6,000/yr", accent: "#15803d", badgeText: "text-white", featured: true, perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "Banner at physical events"] },
-  { name: "Gold", price: "$4,000/yr", accent: "#C8A24B", badgeText: "text-[#0a1645]", perks: ["Logo on sponsors page", "Social media mentions", "Access to all events", "Banner at major events"] },
-  { name: "Silver", price: "$2,000/yr", accent: "#64748B", badgeText: "text-white", perks: ["Logo on website", "Social media mention", "Event access passes"] },
-  { name: "Community", price: "$1,000/yr", accent: "#4A90D9", badgeText: "text-white", perks: ["Website mention", "Certificate of appreciation"] },
-  { name: "General", price: "$100–$400/yr", accent: "#94A3B8", badgeText: "text-[#0a1645]", perks: ["Name listed on our website", "Certificate of appreciation"] },
+  { name: "Platinum", price: "$6,000", period: "/yr", accent: "#15803d", accentDark: "#0d5c2c", featured: true, perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "Banner at physical events"] },
+  { name: "Gold", price: "$4,000", period: "/yr", accent: "#C8A24B", accentDark: "#9a7a2f", perks: ["Logo on sponsors page", "Social media mentions", "Access to all events", "Banner at major events"] },
+  { name: "Silver", price: "$2,000", period: "/yr", accent: "#64748B", accentDark: "#475569", perks: ["Logo on website", "Social media mention", "Event access passes"] },
+  { name: "Community", price: "$1,000", period: "/yr", accent: "#4A90D9", accentDark: "#2f6fb0", perks: ["Website mention", "Certificate of appreciation"] },
+  { name: "General", price: "$100–$400", period: "/yr", accent: "#94A3B8", accentDark: "#6b7689", perks: ["Name listed on our website", "Certificate of appreciation"] },
 ];
 
 function PersonIcon() {
@@ -62,7 +62,7 @@ function EnvelopeIcon() {
 
 function CheckIcon({ color = "#C8A24B" }: { color?: string }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 flex-shrink-0" style={{ color }}>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color }}>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.5 12.75l6 6 9-13.5" />
     </svg>
   );
@@ -139,23 +139,28 @@ export default function SponsorsPage() {
             {tiers.map((tier) => (
               <div
                 key={tier.name}
-                className={`relative bg-white rounded-xl p-6 border border-gray-200 border-t-4 shadow-sm hover:shadow-md transition-shadow ${tier.featured ? "lg:-mt-2 lg:pt-8" : ""}`}
-                style={{
-                  borderTopColor: tier.accent,
-                  ...(tier.featured ? { backgroundColor: `${tier.accent}0d`, boxShadow: `0 0 0 2px ${tier.accent}` } : {}),
-                }}
+                className={`relative rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow flex flex-col ${tier.featured ? "lg:-mt-3" : ""}`}
+                style={tier.featured ? { boxShadow: `0 0 0 3px ${tier.accent}, 0 10px 25px rgba(0,0,0,0.12)` } : undefined}
               >
                 {tier.featured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[11px] font-bold text-white whitespace-nowrap" style={{ backgroundColor: tier.accent }}>
-                    Premier Tier
+                  <span className="absolute top-0 right-0 z-10 px-3 py-1 rounded-bl-xl text-[11px] font-bold text-white" style={{ backgroundColor: tier.accentDark }}>
+                    ★ Premier
                   </span>
                 )}
-                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 ${tier.badgeText}`} style={{ backgroundColor: tier.accent }}>{tier.name}</span>
-                <p className="font-bold text-2xl mb-4" style={{ color: tier.accent }}>{tier.price}</p>
-                <ul className="space-y-2">
+                {/* Colored header band */}
+                <div className="px-5 py-6 text-white text-center" style={{ background: `linear-gradient(135deg, ${tier.accent}, ${tier.accentDark})` }}>
+                  <p className="text-sm font-bold uppercase tracking-widest text-white/90">{tier.name}</p>
+                  <p className="mt-2 font-bold leading-none">
+                    <span className="text-3xl">{tier.price}</span>
+                    <span className="text-base font-semibold text-white/80">{tier.period}</span>
+                  </p>
+                </div>
+                {/* Perks body */}
+                <ul className="flex-1 space-y-3 px-5 py-6 bg-white">
                   {tier.perks.map((p) => (
-                    <li key={p} className="flex gap-2 text-sm text-[#4a5a52]">
-                      <CheckIcon color={tier.accent} />{p}
+                    <li key={p} className="flex gap-2.5 text-sm text-[#3a4a52]">
+                      <CheckIcon color={tier.accent} />
+                      <span>{p}</span>
                     </li>
                   ))}
                 </ul>
