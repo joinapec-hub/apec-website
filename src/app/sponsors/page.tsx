@@ -18,12 +18,13 @@ const currentSponsors = [
   },
 ];
 
+// accent colours create a visual hierarchy: green (top/premier) → blue (community) → grey (entry)
 const tiers = [
-  { name: "Platinum", price: "$6,000/yr", perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "Banner at physical events"] },
-  { name: "Gold", price: "$4,000/yr", perks: ["Logo on sponsors page", "Social media mentions", "Access to all events", "Banner at major events"] },
-  { name: "Silver", price: "$2,000/yr", perks: ["Logo on website", "Social media mention", "Event access passes"] },
-  { name: "Community", price: "$1,000/yr", perks: ["Website mention", "Certificate of appreciation"] },
-  { name: "General", price: "$100–$400/yr", perks: ["Name listed on our website", "Certificate of appreciation"] },
+  { name: "Platinum", price: "$6,000/yr", accent: "#15803d", badgeText: "text-white", featured: true, perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "Banner at physical events"] },
+  { name: "Gold", price: "$4,000/yr", accent: "#C8A24B", badgeText: "text-[#0a1645]", perks: ["Logo on sponsors page", "Social media mentions", "Access to all events", "Banner at major events"] },
+  { name: "Silver", price: "$2,000/yr", accent: "#64748B", badgeText: "text-white", perks: ["Logo on website", "Social media mention", "Event access passes"] },
+  { name: "Community", price: "$1,000/yr", accent: "#4A90D9", badgeText: "text-white", perks: ["Website mention", "Certificate of appreciation"] },
+  { name: "General", price: "$100–$400/yr", accent: "#94A3B8", badgeText: "text-[#0a1645]", perks: ["Name listed on our website", "Certificate of appreciation"] },
 ];
 
 function PersonIcon() {
@@ -59,9 +60,9 @@ function EnvelopeIcon() {
   );
 }
 
-function CheckIcon() {
+function CheckIcon({ color = "#C8A24B" }: { color?: string }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 flex-shrink-0 text-[#C8A24B]">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 flex-shrink-0" style={{ color }}>
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.5 12.75l6 6 9-13.5" />
     </svg>
   );
@@ -134,15 +135,27 @@ export default function SponsorsPage() {
               Align your brand with a trusted professional community and gain visibility among hundreds of engineers and tech professionals.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
             {tiers.map((tier) => (
-              <div key={tier.name} className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow">
-                <h3 className="text-lg font-bold text-[#0f1f5c] mb-1">{tier.name}</h3>
-                <p className="text-[#C8A24B] font-bold text-sm mb-4">{tier.price}</p>
+              <div
+                key={tier.name}
+                className={`relative bg-white rounded-xl p-6 border border-gray-200 border-t-4 shadow-sm hover:shadow-md transition-shadow ${tier.featured ? "lg:-mt-2 lg:pt-8" : ""}`}
+                style={{
+                  borderTopColor: tier.accent,
+                  ...(tier.featured ? { backgroundColor: `${tier.accent}0d`, boxShadow: `0 0 0 2px ${tier.accent}` } : {}),
+                }}
+              >
+                {tier.featured && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-[11px] font-bold text-white whitespace-nowrap" style={{ backgroundColor: tier.accent }}>
+                    Premier Tier
+                  </span>
+                )}
+                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mb-3 ${tier.badgeText}`} style={{ backgroundColor: tier.accent }}>{tier.name}</span>
+                <p className="font-bold text-2xl mb-4" style={{ color: tier.accent }}>{tier.price}</p>
                 <ul className="space-y-2">
                   {tier.perks.map((p) => (
                     <li key={p} className="flex gap-2 text-sm text-[#4a5a52]">
-                      <CheckIcon />{p}
+                      <CheckIcon color={tier.accent} />{p}
                     </li>
                   ))}
                 </ul>

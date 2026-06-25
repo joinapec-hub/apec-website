@@ -85,7 +85,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-[#0f1f5c]">Community</p>
-                    <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline text-sm">Join our Facebook Group →</a>
+                    <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="block text-[#4A90D9] hover:underline text-sm">Join our Facebook Group →</a>
+                    <a href="https://chat.whatsapp.com/Ju7iSnLwYniA8dTZnKbrIJ" target="_blank" rel="noopener noreferrer" className="block text-[#4A90D9] hover:underline text-sm mt-1">Join our WhatsApp Group →</a>
                   </div>
                 </div>
               </div>
