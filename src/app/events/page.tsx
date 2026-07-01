@@ -18,7 +18,7 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Events & Programs",
   description:
-    "Upcoming APEC events and programs — networking mixers, the annual BBQ, workshops, and community gatherings for engineers and professionals in Calgary and across Canada. Tickets via TixFox.",
+    "Upcoming APEC events and programs — networking mixers, the annual BBQ, workshops, and community gatherings for engineers and professionals in Calgary and across Canada.",
   alternates: { canonical: "/events" },
 };
 
@@ -116,7 +116,7 @@ function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
             >
-              <TicketIcon /> Get Tickets on TixFox
+              <TicketIcon /> Get Tickets
             </a>
           </div>
         </div>
@@ -138,7 +138,7 @@ function NoEvents() {
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors"
       >
-        <TicketIcon /> View our TixFox page
+        <TicketIcon /> View Tickets
       </a>
     </div>
   );
@@ -203,23 +203,12 @@ export default async function EventsPage() {
           <p className="text-xl text-gray-300">Stay connected. Keep growing. Make an impact.</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <a href={events[0] ? eventUrl(events[0]) : FALLBACK_TICKETS} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
-              <TicketIcon /> Buy Tickets on TixFox
+              <TicketIcon /> Buy Tickets
             </a>
             <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
               <HeartIcon /> Donate / Support Us
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* TixFox banner */}
-      <section className="bg-[#F2E9D2] border-b border-[#C8A24B]/20 py-4">
-        <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-[#4a5a52]">
-          <div className="flex items-center gap-2">
-            <span className="text-[#0f1f5c] font-bold">Powered by TixFox</span>
-            <span>— secure, seamless ticketing for all APEC events.</span>
-          </div>
-          <span className="text-[#4a5a52]">Events sync automatically from TixFox.</span>
         </div>
       </section>
 
