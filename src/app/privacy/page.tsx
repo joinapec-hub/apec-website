@@ -26,7 +26,7 @@ export default function PrivacyPage() {
               <li>Professional information (engineering discipline, designation)</li>
               <li>Mailing address (optional)</li>
               <li>Educational background</li>
-              <li>Payment information (processed securely through Showpass or GoFundMe — we do not store payment card details)</li>
+              <li>Payment information (processed securely through Stripe and our third-party ticketing provider — we do not store payment card details)</li>
             </ul>
           </section>
 
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
             <p>We do not sell, rent, or trade your personal information. We may share information only:</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li>With APEC Executive Committee members for operational purposes</li>
-              <li>With service providers (e.g., Showpass for event ticketing) under confidentiality agreements</li>
+              <li>With service providers (e.g., Stripe for payments and our third-party ticketing provider for events) under confidentiality agreements</li>
               <li>Where required by law</li>
             </ul>
           </section>

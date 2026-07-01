@@ -30,7 +30,7 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-[#0f1f5c] mb-2">4. Events &amp; Tickets</h2>
-            <p>Event tickets are sold through Showpass, subject to Showpass&apos;s terms and conditions. APEC is not responsible for issues arising from third-party payment processors. Event details, dates, and pricing are subject to change.</p>
+            <p>Membership fees and donations are processed securely through Stripe, and event tickets are sold through our third-party ticketing provider, each subject to their own terms and conditions. APEC is not responsible for issues arising from third-party payment processors. Event details, dates, and pricing are subject to change.</p>
           </section>
 
           <section>

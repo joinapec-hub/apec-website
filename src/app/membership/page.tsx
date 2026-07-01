@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { STRIPE_LINKS } from "@/lib/payments";
 
 export const metadata: Metadata = {
   title: "Membership",
@@ -19,6 +20,8 @@ const tiers = [
     features: ["Attend all events", "Access to community resources", "Mentorship opportunities", "Career guidance sessions"],
     note: "Must be enrolled in an undergraduate engineering program in Canada.",
     cta: "Apply as Student",
+    href: "/membership/student",
+    external: false,
   },
   {
     name: "Regular",
@@ -31,6 +34,8 @@ const tiers = [
     features: ["Full voting rights", "All event access", "AGM participation", "Professional networking", "Career development resources", "Mentorship program"],
     note: "Requires a minimum Bachelor's degree or equivalent in engineering.",
     cta: "Join as Regular Member",
+    href: STRIPE_LINKS.regular,
+    external: true,
   },
   {
     name: "Life",
@@ -42,6 +47,8 @@ const tiers = [
     features: ["All Regular Member benefits", "Lifetime membership — pay once", "Full voting rights forever", "Recognition in APEC publications", "Priority event access"],
     note: "Any regular member can upgrade to Life Member with a lump sum payment.",
     cta: "Become a Life Member",
+    href: STRIPE_LINKS.life,
+    external: true,
   },
 ];
 
@@ -124,9 +131,15 @@ export default function MembershipPage() {
                   ))}
                 </ul>
                 <p className="text-xs text-gray-400 mb-4 italic">{tier.note}</p>
-                <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="block text-center px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
-                  {tier.cta}
-                </a>
+                {tier.external ? (
+                  <a href={tier.href} target="_blank" rel="noopener noreferrer" className="block text-center px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
+                    {tier.cta}
+                  </a>
+                ) : (
+                  <Link href={tier.href} className="block text-center px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
+                    {tier.cta}
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -141,17 +154,24 @@ export default function MembershipPage() {
       {/* Payment */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-8 text-center">Payment &amp; Registration</h2>
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-3 text-center">Payment &amp; Registration</h2>
+          <p className="text-[#4a5a52] text-sm text-center mb-8 max-w-2xl mx-auto">
+            Payments are handled securely by Stripe. You&apos;ll enter your name, email, and phone at checkout, and a receipt is emailed to you automatically. Students join free using the form — no payment needed.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border border-gray-200 rounded-xl p-6">
-              <h3 className="font-bold text-[#0f1f5c] mb-2"><CreditCardIcon />Pay via Showpass</h3>
-              <p className="text-sm text-[#4a5a52] mb-4">Secure online payment for Regular and Life memberships. Fast, easy, and receipt included.</p>
-              <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#0f1f5c] text-white font-semibold rounded-lg text-sm hover:bg-[#0a1645] transition-colors">Register on Showpass</a>
+              <h3 className="font-bold text-[#0f1f5c] mb-2"><CreditCardIcon />Pay securely by card</h3>
+              <p className="text-sm text-[#4a5a52] mb-4">Join or renew online via Stripe. Regular membership is $10/year (recurring); Life membership is a one-time $100.</p>
+              <div className="flex flex-wrap gap-2">
+                <a href={STRIPE_LINKS.regular} target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#0f1f5c] text-white font-semibold rounded-lg text-sm hover:bg-[#0a1645] transition-colors">Regular — $10/yr</a>
+                <a href={STRIPE_LINKS.life} target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#0f1f5c] text-white font-semibold rounded-lg text-sm hover:bg-[#0a1645] transition-colors">Life — $100</a>
+                <Link href="/membership/student" className="inline-block px-5 py-2 bg-white border border-[#0f1f5c] text-[#0f1f5c] font-semibold rounded-lg text-sm hover:bg-[#F2E9D2] transition-colors">Student — Free</Link>
+              </div>
             </div>
             <div className="border border-gray-200 rounded-xl p-6">
               <h3 className="font-bold text-[#0f1f5c] mb-2"><HeartIcon />Donate / Support</h3>
-              <p className="text-sm text-[#4a5a52] mb-4">Help fund community programs, events, and scholarships. Donations accepted via GoFundMe.</p>
-              <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-sm hover:bg-[#d4aa5a] transition-colors">Donate on GoFundMe</a>
+              <p className="text-sm text-[#4a5a52] mb-4">Help fund community programs, events, and scholarships. Donations are $20 each — give as many times as you like to contribute more.</p>
+              <a href={STRIPE_LINKS.donation} target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-sm hover:bg-[#d4aa5a] transition-colors">Donate $20</a>
             </div>
           </div>
         </div>
