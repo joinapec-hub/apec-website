@@ -1,8 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  getTixFoxEvents,
+  eventUrl,
+  formatEventDate,
+  formatEventLocation,
+  plainDescription,
+  type TixFoxEvent,
+} from "@/lib/tixfox";
 
-const BBQ_POSTER = "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Assets/Event%20Posters/APEC%20BBQ%20AUG%202026.JPG";
-const BBQ_TICKETS = "https://tixfox.co/e/2jQa9HkAwq";
+// Re-fetch the TixFox events list at most every 5 minutes.
+export const revalidate = 300;
+
+// Fallback ticket link used only when the TixFox API is unavailable.
+const FALLBACK_TICKETS = "https://tixfox.co/e/2jQa9HkAwq";
 
 function TicketIcon() {
   return (
@@ -20,7 +31,113 @@ function HeartIcon() {
   );
 }
 
-export default function EventsPage() {
+function CalendarIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+    </svg>
+  );
+}
+
+function MapPinIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+    </svg>
+  );
+}
+
+function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
+  const url = eventUrl(ev);
+  const summary = plainDescription(ev.description);
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {/* Poster */}
+        <div className="relative h-72 lg:h-auto min-h-[320px] bg-[#0f1f5c]">
+          {ev.event_image ? (
+            <Image
+              src={ev.event_image}
+              alt={ev.title}
+              fill
+              className="object-cover object-top"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={85}
+            />
+          ) : null}
+        </div>
+
+        {/* Details */}
+        <div className="p-8 flex flex-col justify-between">
+          <div>
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              {live ? (
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-800">Happening Now</span>
+              ) : (
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-100 text-orange-800">Upcoming Event</span>
+              )}
+            </div>
+
+            <h3 className="text-3xl font-bold text-[#0f1f5c] mb-3">{ev.title}</h3>
+
+            <div className="space-y-3 text-[#4a5a52] text-sm mb-6">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
+                  <CalendarIcon />
+                </div>
+                <span className="font-medium">{formatEventDate(ev)}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
+                  <MapPinIcon />
+                </div>
+                <span className="font-medium">{formatEventLocation(ev)}</span>
+              </div>
+            </div>
+
+            {summary ? <p className="text-[#4a5a52] leading-relaxed">{summary}</p> : null}
+          </div>
+
+          <div className="mt-8">
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
+            >
+              <TicketIcon /> Get Tickets on TixFox
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NoEvents() {
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl p-10 text-center shadow-md">
+      <h3 className="text-2xl font-bold text-[#0f1f5c] mb-3">No upcoming events right now</h3>
+      <p className="text-[#4a5a52] mb-6">
+        We&apos;re planning our next event. Check back soon, or follow us on Facebook for announcements.
+      </p>
+      <a
+        href={FALLBACK_TICKETS}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors"
+      >
+        <TicketIcon /> View our TixFox page
+      </a>
+    </div>
+  );
+}
+
+export default async function EventsPage() {
+  const { upcoming, live } = await getTixFoxEvents();
+  const events = [...live, ...upcoming];
+
   return (
     <>
       {/* Hero */}
@@ -39,7 +156,7 @@ export default function EventsPage() {
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">Events &amp; Programs</h1>
           <p className="text-xl text-gray-300">Stay connected. Keep growing. Make an impact.</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href={BBQ_TICKETS} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
+            <a href={events[0] ? eventUrl(events[0]) : FALLBACK_TICKETS} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
               <TicketIcon /> Buy Tickets on TixFox
             </a>
             <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
@@ -49,14 +166,14 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Showpass banner */}
+      {/* TixFox banner */}
       <section className="bg-[#F2E9D2] border-b border-[#C8A24B]/20 py-4">
         <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-[#4a5a52]">
           <div className="flex items-center gap-2">
             <span className="text-[#0f1f5c] font-bold">Powered by TixFox</span>
             <span>— secure, seamless ticketing for all APEC events.</span>
           </div>
-          <a href={BBQ_TICKETS} target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline font-medium">View event on TixFox →</a>
+          <span className="text-[#4a5a52]">Events sync automatically from TixFox.</span>
         </div>
       </section>
 
@@ -65,70 +182,15 @@ export default function EventsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0f1f5c] mb-10">Upcoming Events</h2>
 
-          {/* BBQ Event Card */}
-          <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
-              {/* Poster */}
-              <div className="relative h-72 lg:h-auto min-h-[320px]">
-                <Image
-                  src={BBQ_POSTER}
-                  alt="APEC BBQ August 2026"
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  quality={85}
-                  priority
-                />
-              </div>
-
-              {/* Details */}
-              <div className="p-8 flex flex-col justify-between">
-                <div>
-                  <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-100 text-orange-800">Community Social</span>
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-green-100 text-green-800">Family Friendly</span>
-                  </div>
-
-                  <h3 className="text-3xl font-bold text-[#0f1f5c] mb-3">APEC Annual BBQ 2026</h3>
-
-                  <div className="space-y-3 text-[#4a5a52] text-sm mb-6">
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                        </svg>
-                      </div>
-                      <span className="font-medium">August 2026</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                        </svg>
-                      </div>
-                      <span className="font-medium">Calgary, Alberta</span>
-                    </div>
-                  </div>
-
-                  <p className="text-[#4a5a52] leading-relaxed">
-                    Join us for APEC's annual summer BBQ — a beloved community tradition bringing together engineers, professionals, and families for food, fun, and great conversation. All members and guests are welcome.
-                  </p>
-                </div>
-
-                <div className="mt-8">
-                  <a
-                    href={BBQ_TICKETS}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
-                  >
-                    <TicketIcon /> Get Tickets on TixFox
-                  </a>
-                </div>
-              </div>
+          {events.length > 0 ? (
+            <div className="space-y-8">
+              {events.map((ev) => (
+                <EventCard key={ev.slug} ev={ev} live={live.includes(ev)} />
+              ))}
             </div>
-          </div>
+          ) : (
+            <NoEvents />
+          )}
 
           <p className="mt-8 text-center text-[#4a5a52] text-sm">
             More events coming soon. Follow us on{" "}

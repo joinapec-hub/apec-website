@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
       { protocol: "https", hostname: "raw.githubusercontent.com" },
+      { protocol: "https", hostname: "cdn.tixfox.co" },
+      { protocol: "https", hostname: "api.tixfox.co" },
     ],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 3600,
