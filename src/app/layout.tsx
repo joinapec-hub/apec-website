@@ -69,14 +69,29 @@ const jsonLd = {
       "@type": ["Organization", "NGO"],
       "@id": `${SITE_URL}/#organization`,
       name: "Association of Pakistani Engineers in Canada",
-      alternateName: "APEC",
+      alternateName: ["APEC", "APE Canada"],
       url: SITE_URL,
       logo: `${SITE_URL}/apec-logo.png`,
       image: `${SITE_URL}/opengraph-image.jpeg`,
       email: "info@apecanada.ca",
       foundingDate: "2011",
+      slogan: "Engineers & Professionals Building a Stronger Canada Together",
       description:
         "A Calgary-based non-profit professional community of engineers and professionals of Pakistani origin, supporting networking, mentorship, career development, and community events across Canada.",
+      foundingLocation: {
+        "@type": "Place",
+        name: "Calgary, Alberta, Canada",
+      },
+      knowsAbout: [
+        "Engineering",
+        "Professional development",
+        "Engineer mentorship",
+        "P.Eng licensing in Canada",
+        "APEGA licensing in Alberta",
+        "Careers for internationally trained engineers",
+        "Immigrant settlement and integration",
+        "Professional networking",
+      ],
       areaServed: { "@type": "Country", name: "Canada" },
       address: {
         "@type": "PostalAddress",
@@ -84,7 +99,10 @@ const jsonLd = {
         addressRegion: "AB",
         addressCountry: "CA",
       },
-      sameAs: ["https://www.facebook.com/groups/781259795220477/"],
+      sameAs: [
+        "https://www.facebook.com/groups/781259795220477/",
+        "https://chat.whatsapp.com/Ju7iSnLwYniA8dTZnKbrIJ",
+      ],
     },
     {
       "@type": "WebSite",
