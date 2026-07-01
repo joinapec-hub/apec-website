@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const stats = [
-  { value: "200+", label: "Members" },
+  { value: "1,200+", label: "Members" },
   { value: "10+", label: "Years Active" },
   { value: "50+", label: "Events Hosted" },
 ];
