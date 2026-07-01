@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const BBQ_POSTER = "https://raw.githubusercontent.com/joinapec-hub/apec-website/main/Assets/Event%20Posters/APEC%20BBQ%20AUG%202026.JPG";
+const BBQ_TICKETS = "https://tixfox.co/e/2jQa9HkAwq";
 
 function TicketIcon() {
   return (
@@ -38,8 +39,8 @@ export default function EventsPage() {
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">Events &amp; Programs</h1>
           <p className="text-xl text-gray-300">Stay connected. Keep growing. Make an impact.</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
-              <TicketIcon /> Buy Tickets on Showpass
+            <a href={BBQ_TICKETS} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
+              <TicketIcon /> Buy Tickets on TixFox
             </a>
             <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
               <HeartIcon /> Donate / Support Us
@@ -52,10 +53,10 @@ export default function EventsPage() {
       <section className="bg-[#F2E9D2] border-b border-[#C8A24B]/20 py-4">
         <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-[#4a5a52]">
           <div className="flex items-center gap-2">
-            <span className="text-[#0f1f5c] font-bold">Powered by Showpass</span>
+            <span className="text-[#0f1f5c] font-bold">Powered by TixFox</span>
             <span>— secure, seamless ticketing for all APEC events.</span>
           </div>
-          <a href="https://www.showpass.com" target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline font-medium">View all events on Showpass →</a>
+          <a href={BBQ_TICKETS} target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline font-medium">View event on TixFox →</a>
         </div>
       </section>
 
@@ -117,14 +118,13 @@ export default function EventsPage() {
 
                 <div className="mt-8">
                   <a
-                    href="https://www.showpass.com"
+                    href={BBQ_TICKETS}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
                   >
-                    <TicketIcon /> Get Tickets on Showpass
+                    <TicketIcon /> Get Tickets on TixFox
                   </a>
-                  <p className="mt-3 text-xs text-gray-400">Ticket link will be updated closer to the event date.</p>
                 </div>
               </div>
             </div>
