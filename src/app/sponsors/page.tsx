@@ -1,10 +1,11 @@
 import Link from "next/link";
 
-// rank determines display order: 1 = Platinum (top), 4 = Community (bottom)
+// rank determines display order: 1 = Mega (top), 6 = General (bottom)
 const currentSponsors = [
   {
-    rank: 4,
+    rank: 5,
     tier: "Community Sponsor",
+    tierName: "Community",
     name: "FastSigns Downtown Calgary",
     tagline: "Professional Signage & Visual Communications",
     director: "Salman Ali Mumtaz",
@@ -18,13 +19,26 @@ const currentSponsors = [
   },
 ];
 
-// accent colours create a visual hierarchy: green (top/premier) → blue (community) → grey (entry)
-const tiers = [
-  { name: "Platinum", price: "$6,000", period: "/yr", accent: "#15803d", accentDark: "#0d5c2c", featured: true, perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "Banner at physical events"] },
-  { name: "Gold", price: "$4,000", period: "/yr", accent: "#C8A24B", accentDark: "#9a7a2f", perks: ["Logo on sponsors page", "Social media mentions", "Access to all events", "Banner at major events"] },
-  { name: "Silver", price: "$2,000", period: "/yr", accent: "#64748B", accentDark: "#475569", perks: ["Logo on website", "Social media mention", "Event access passes"] },
-  { name: "Community", price: "$1,000", period: "/yr", accent: "#4A90D9", accentDark: "#2f6fb0", perks: ["Website mention", "Certificate of appreciation"] },
-  { name: "General", price: "$100–$400", period: "/yr", accent: "#94A3B8", accentDark: "#6b7689", perks: ["Name listed on our website", "Certificate of appreciation"] },
+// Sponsorship tiers (per event). Mega is the premier tier and takes the
+// featured styling; Platinum is highlighted with its own distinct accent.
+type Tier = {
+  name: string;
+  price: string;
+  period: string;
+  accent: string;
+  accentDark: string;
+  featured?: boolean;
+  highlight?: boolean;
+  badge?: string;
+  perks: string[];
+};
+const tiers: Tier[] = [
+  { name: "Mega", price: "$8,000", period: "/event", accent: "#15803d", accentDark: "#0d5c2c", featured: true, badge: "★ Premier", perks: ["Logo on homepage hero", "Speaking slot at events", "VIP access to all events", "Social media features", "2 banners at physical events", "16 complimentary tickets", "Verbal recognition at events"] },
+  { name: "Platinum", price: "$6,000", period: "/event", accent: "#6D28D9", accentDark: "#4c1d95", highlight: true, badge: "◆ Signature", perks: ["Logo on homepage", "Speaking slot at events", "VIP access to all events", "Social media features", "1 banner at physical events", "8 complimentary tickets", "Verbal recognition at events"] },
+  { name: "Gold", price: "$4,000", period: "/event", accent: "#C8A24B", accentDark: "#9a7a2f", perks: ["Logo on sponsors page", "VIP access to all events", "Social media mentions", "1 banner at major events", "4 complimentary tickets", "Verbal recognition at events"] },
+  { name: "Silver", price: "$2,000", period: "/event", accent: "#64748B", accentDark: "#475569", perks: ["Logo on website", "Social media mention", "2 complimentary tickets", "Verbal recognition at events"] },
+  { name: "Community", price: "$1,000", period: "/event", accent: "#4A90D9", accentDark: "#2f6fb0", perks: ["Website mention", "1 complimentary ticket", "Certificate of appreciation"] },
+  { name: "General", price: "$500", period: "/event", accent: "#94A3B8", accentDark: "#6b7689", perks: ["Name listed on our website", "Certificate of appreciation"] },
 ];
 
 function PersonIcon() {
@@ -95,7 +109,7 @@ export default function SponsorsPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0f1f5c] mb-3 text-center">Current Sponsors</h2>
-          <p className="text-[#4a5a52] text-sm text-center mb-8 max-w-2xl mx-auto">Sponsors are featured by tier — Platinum partners are showcased first, followed by Gold, Silver, and Community sponsors.</p>
+          <p className="text-[#4a5a52] text-sm text-center mb-8 max-w-2xl mx-auto">Sponsors are featured by tier — Mega and Platinum partners are showcased first, followed by Gold, Silver, Community, and General sponsors.</p>
           <div className="space-y-6">
           {[...currentSponsors].sort((a, b) => a.rank - b.rank).map((sponsor) => (
             <div key={sponsor.name} className={`border-2 ${sponsor.color} rounded-2xl p-8`}>
@@ -126,25 +140,69 @@ export default function SponsorsPage() {
         </div>
       </section>
 
+      {/* Sponsor name roster — every sponsor displayed by tier, Mega → General */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#0f1f5c] mb-3 text-center">Sponsors by Tier</h2>
+          <p className="text-[#4a5a52] text-sm text-center mb-8 max-w-2xl mx-auto">
+            We proudly display every sponsor&apos;s name by tier — from Mega down to General.
+          </p>
+          <div className="space-y-3">
+            {tiers.map((tier) => {
+              const names = currentSponsors
+                .filter((s) => s.tierName === tier.name)
+                .map((s) => s.name);
+              return (
+                <div
+                  key={tier.name}
+                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 rounded-xl bg-white border border-gray-200 p-4"
+                  style={{ borderLeft: `5px solid ${tier.accent}` }}
+                >
+                  <span
+                    className="inline-flex items-center justify-center min-w-[110px] px-3 py-1 rounded-full text-sm font-bold text-white"
+                    style={{ backgroundColor: tier.accent }}
+                  >
+                    {tier.name}
+                  </span>
+                  {names.length > 0 ? (
+                    <span className="text-[#0f1f5c] font-semibold">{names.join(", ")}</span>
+                  ) : (
+                    <span className="text-[#4a5a52] italic">
+                      Your name here — become our first {tier.name} sponsor.
+                    </span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Sponsorship tiers */}
       <section className="py-20 bg-[#F2E9D2]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-[#0f1f5c]">Become a Sponsor</h2>
             <p className="mt-2 text-[#4a5a52] max-w-xl mx-auto">
-              Align your brand with a trusted professional community and gain visibility among hundreds of engineers and tech professionals.
+              Align your brand with a trusted professional community and gain visibility among 1,200+ engineers and tech professionals.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
             {tiers.map((tier) => (
               <div
                 key={tier.name}
                 className={`relative rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow flex flex-col ${tier.featured ? "lg:-mt-3" : ""}`}
-                style={tier.featured ? { boxShadow: `0 0 0 3px ${tier.accent}, 0 10px 25px rgba(0,0,0,0.12)` } : undefined}
+                style={
+                  tier.featured
+                    ? { boxShadow: `0 0 0 3px ${tier.accent}, 0 10px 25px rgba(0,0,0,0.12)` }
+                    : tier.highlight
+                    ? { boxShadow: `0 0 0 2px ${tier.accent}, 0 8px 20px rgba(0,0,0,0.10)` }
+                    : undefined
+                }
               >
-                {tier.featured && (
+                {(tier.featured || tier.highlight) && tier.badge && (
                   <span className="absolute top-0 right-0 z-10 px-3 py-1 rounded-bl-xl text-[11px] font-bold text-white" style={{ backgroundColor: tier.accentDark }}>
-                    ★ Premier
+                    {tier.badge}
                   </span>
                 )}
                 {/* Colored header band */}

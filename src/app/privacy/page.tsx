@@ -1,5 +1,7 @@
 export const metadata = {
-  title: "Privacy Policy – APEC",
+  title: "Privacy Policy",
+  description: "How APEC collects, uses, and protects your personal information.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
