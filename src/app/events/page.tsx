@@ -9,6 +9,7 @@ import {
   FALLBACK_EVENTS,
   type TixFoxEvent,
 } from "@/lib/tixfox";
+import { STRIPE_LINKS } from "@/lib/payments";
 
 import type { Metadata } from "next";
 
@@ -205,7 +206,7 @@ export default async function EventsPage() {
             <a href={events[0] ? eventUrl(events[0]) : FALLBACK_TICKETS} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
               <TicketIcon /> Buy Tickets
             </a>
-            <a href="https://www.gofundme.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
+            <a href={STRIPE_LINKS.donation} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
               <HeartIcon /> Donate / Support Us
             </a>
           </div>

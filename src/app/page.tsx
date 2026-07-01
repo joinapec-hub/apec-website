@@ -186,7 +186,7 @@ export default function HomePage() {
           <span className="text-[#C8A24B] font-semibold text-sm uppercase tracking-wider">Events &amp; Programs</span>
           <div className="w-12 h-0.5 bg-[#C8A24B] mt-2 mb-3 mx-auto" />
           <h2 className="text-4xl sm:text-5xl font-bold text-[#0f1f5c] leading-tight">Join Our Next Gathering</h2>
-          <p className="mt-4 text-[#4a5a52] leading-relaxed text-lg max-w-2xl mx-auto">From technical seminars and career development sessions to cultural celebrations and community socials — our calendar is packed with meaningful events year-round. Ticketing powered by Showpass.</p>
+          <p className="mt-4 text-[#4a5a52] leading-relaxed text-lg max-w-2xl mx-auto">From technical seminars and career development sessions to cultural celebrations and community socials — our calendar is packed with meaningful events year-round.</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/events" className="px-8 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors text-lg">View Upcoming Events</Link>
             <Link href="/gallery" className="px-8 py-3.5 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0d3d7a] transition-colors text-lg">View Photo Gallery</Link>
