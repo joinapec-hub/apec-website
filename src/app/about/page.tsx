@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -309,6 +310,12 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+          <p className="mt-8 text-center text-[#4a5a52]">
+            Have questions about membership, events, or getting involved?{" "}
+            <Link href="/faq" className="text-[#4A90D9] hover:underline font-medium">
+              Read our Frequently Asked Questions →
+            </Link>
+          </p>
         </div>
       </section>
 
