@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Membership",
+  description:
+    "Become an APEC member. Explore Student, Regular, and Life membership options for Pakistani engineers and professionals in Canada — voting rights, events, and career development.",
+  alternates: { canonical: "/membership" },
+};
 
 const tiers = [
   {

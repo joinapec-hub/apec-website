@@ -9,8 +9,17 @@ import {
   type TixFoxEvent,
 } from "@/lib/tixfox";
 
+import type { Metadata } from "next";
+
 // Re-fetch the TixFox events list at most every 5 minutes.
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: "Events & Programs",
+  description:
+    "Upcoming APEC events and programs — networking mixers, the annual BBQ, workshops, and community gatherings for engineers and professionals in Calgary and across Canada. Tickets via TixFox.",
+  alternates: { canonical: "/events" },
+};
 
 // Fallback ticket link used only when the TixFox API is unavailable.
 const FALLBACK_TICKETS = "https://tixfox.co/e/2jQa9HkAwq";
@@ -138,8 +147,40 @@ export default async function EventsPage() {
   const { upcoming, live } = await getTixFoxEvents();
   const events = [...live, ...upcoming];
 
+  // Event structured data (schema.org) for search + AI answer engines.
+  const eventsJsonLd = events.map((ev) => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: ev.title,
+    startDate: ev.start_time || undefined,
+    endDate: ev.end_time || undefined,
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    image: ev.event_image ? [ev.event_image] : undefined,
+    description: plainDescription(ev.description) || undefined,
+    url: eventUrl(ev),
+    location: {
+      "@type": "Place",
+      name: ev.venue_name || ev.location || undefined,
+      address:
+        ev.address || [ev.locality, ev.region].filter(Boolean).join(", ") || undefined,
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "APEC",
+      url: "https://www.apecanada.ca",
+    },
+  }));
+
   return (
     <>
+      {eventsJsonLd.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }}
+        />
+      )}
+
       {/* Hero */}
       <section
         className="relative py-28 overflow-hidden"

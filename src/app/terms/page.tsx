@@ -1,5 +1,7 @@
 export const metadata = {
-  title: "Terms of Service – APEC",
+  title: "Terms of Service",
+  description: "The terms of service governing use of the APEC website and membership.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

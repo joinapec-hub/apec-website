@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: { absolute: "APEC – Association of Pakistani Engineers in Canada | Calgary" },
+  description:
+    "Join APEC, Calgary's community of 1,200+ Pakistani engineers and professionals in Canada. Networking, mentorship, career development, and events across Canada since 2011.",
+  alternates: { canonical: "/" },
+};
 
 const stats = [
   { value: "1,200+", label: "Members" },

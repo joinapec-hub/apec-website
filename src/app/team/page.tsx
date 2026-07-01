@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Executive Team",
+  description:
+    "Meet the executive team and advisors leading APEC — the Association of Pakistani Engineers in Canada, based in Calgary, Alberta.",
+  alternates: { canonical: "/team" },
+};
 
 type Person = {
   name: string;

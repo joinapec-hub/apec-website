@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about APEC — the Association of Pakistani Engineers in Canada. Founded in 2011 in Calgary, we connect engineers and professionals through networking, mentorship, and community.",
+  alternates: { canonical: "/about" },
+};
 
 const values = [
   {
