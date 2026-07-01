@@ -6,6 +6,7 @@ import {
   formatEventDate,
   formatEventLocation,
   plainDescription,
+  FALLBACK_EVENTS,
   type TixFoxEvent,
 } from "@/lib/tixfox";
 
@@ -144,8 +145,12 @@ function NoEvents() {
 }
 
 export default async function EventsPage() {
-  const { upcoming, live } = await getTixFoxEvents();
-  const events = [...live, ...upcoming];
+  const { upcoming, live, configured, ok } = await getTixFoxEvents();
+  const liveEvents = [...live, ...upcoming];
+  // If TixFox can't be reached (no API key configured yet, or the request
+  // failed), fall back to the known event so the page is never blank.
+  const events =
+    liveEvents.length === 0 && (!configured || !ok) ? FALLBACK_EVENTS : liveEvents;
 
   // Event structured data (schema.org) for search + AI answer engines.
   const eventsJsonLd = events.map((ev) => ({

@@ -124,7 +124,7 @@ const needStats: Stat[] = [
 const communityStats: Stat[] = [
   {
     eyebrow: "Members",
-    value: "200",
+    value: "1,200",
     suffix: "+",
     title: "Engineers & professionals",
     desc: "A growing network spanning disciplines and backgrounds across Canada.",

@@ -52,6 +52,30 @@ export function eventUrl(ev: TixFoxEvent): string {
   return EVENT_BASE + (ev.custom_slug || ev.slug);
 }
 
+// Shown only when the TixFox API can't be reached (e.g. TIXFOX_API_KEY not
+// set in the environment yet) so the events page is never blank. Once the
+// key is configured, live TixFox data replaces this.
+export const FALLBACK_EVENTS: TixFoxEvent[] = [
+  {
+    title: "APEC Annual BBQ 2026",
+    slug: "2jQa9HkAwq",
+    custom_slug: null,
+    description:
+      "<p>Join us for APEC's annual summer BBQ — a beloved community tradition bringing together engineers, professionals, and families for food, fun, and great conversation. All members and guests are welcome.</p>",
+    start_time: "2026-08-03T20:00:00.000000Z",
+    end_time: "2026-08-04T02:00:00.000000Z",
+    timezone: "America/Edmonton",
+    location: "venue",
+    address: "Fish Creek Provincial Park, Calgary, AB, Canada",
+    venue_name: "Fish Creek Provincial Park",
+    locality: "Calgary",
+    region: "AB",
+    event_image:
+      "https://cdn.tixfox.co/event_images/awvisQL1Bk5v9ql6SFj4WbqqqSAQGZCJCDZFpFrB.jpg",
+    status: 2,
+  },
+];
+
 export async function getTixFoxEvents(): Promise<TixFoxData> {
   const apiKey = process.env.TIXFOX_API_KEY;
   if (!apiKey) {
