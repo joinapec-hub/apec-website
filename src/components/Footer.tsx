@@ -5,9 +5,9 @@ export default function Footer() {
   return (
     <footer className="bg-[#071f15] text-gray-300 border-t-4 border-[#C8A24B]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <Image src="/apec-logo.png" alt="APEC Logo" width={48} height={48} className="rounded-full" />
               <div>
@@ -70,7 +70,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>Calgary, Alberta, Canada</li>
               <li>
-                <a href="mailto:info@apecanada.ca" className="hover:text-[#C8A24B] transition-colors">
+                <a href="mailto:info@apecanada.ca" className="hover:text-[#C8A24B] transition-colors break-words">
                   info@apecanada.ca
                 </a>
               </li>

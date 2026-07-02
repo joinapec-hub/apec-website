@@ -119,10 +119,10 @@ export default function HomePage() {
 
       {/* Stats */}
       <section className="bg-[#0f1f5c] py-14">
-        <div className="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
           {stats.map((s) => (
             <div key={s.label} className="pl-5 border-l-4 border-[#C8A24B]">
-              <p className="text-white text-5xl font-bold">{s.value}</p>
+              <p className="text-white text-4xl md:text-5xl font-bold">{s.value}</p>
               <p className="text-[#C8A24B] font-medium text-base mt-1">{s.label}</p>
             </div>
           ))}
