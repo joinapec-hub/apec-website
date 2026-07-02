@@ -30,19 +30,19 @@ export default function Navbar() {
   return (
     <header className={`sticky top-0 z-50 bg-[#0f1f5c] transition-shadow ${scrolled ? "shadow-xl" : ""}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[104px]">
+        <div className="flex items-center justify-between gap-2 h-[72px] sm:h-[88px] md:h-[104px]">
           {/* Logo + Name */}
-          <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Image
               src="/apec-logo.png"
               alt="APEC Logo"
               width={64}
               height={64}
-              className="rounded-full ring-2 ring-[#C8A24B]/40 shadow-md"
+              className="w-[44px] h-[44px] sm:w-[52px] sm:h-[52px] md:w-[64px] md:h-[64px] shrink-0 rounded-full ring-2 ring-[#C8A24B]/40 shadow-md"
               priority
             />
-            <div className="leading-tight">
-              <span className="block text-white font-bold text-base max-w-[280px] leading-tight tracking-wide">
+            <div className="leading-tight min-w-0">
+              <span className="block text-white font-bold text-[13px] leading-[1.15] sm:text-[15px] sm:leading-tight md:text-base tracking-wide max-w-[190px] sm:max-w-[240px] md:max-w-[280px]">
                 Association of Pakistani Engineers in Canada
               </span>
             </div>
@@ -73,7 +73,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="xl:hidden text-white p-2"
+            className="xl:hidden shrink-0 text-white p-2 -mr-1"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
