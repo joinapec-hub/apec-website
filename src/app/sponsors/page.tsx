@@ -1,7 +1,59 @@
 import Link from "next/link";
+import Image from "next/image";
 
 // rank determines display order: 1 = Mega (top), 6 = General (bottom)
-const currentSponsors = [
+type Sponsor = {
+  rank: number;
+  tier: string;
+  tierName: string;
+  name: string;
+  tagline: string;
+  website: string;
+  desc: string;
+  color: string;
+  badgeColor: string;
+  // Logo sponsors show a linked logo + tagline; contact sponsors show details.
+  logo?: string;
+  logoWidth?: number;
+  logoHeight?: number;
+  cta?: string;
+  director?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+};
+
+const currentSponsors: Sponsor[] = [
+  {
+    rank: 1,
+    tier: "Mega Sponsor",
+    tierName: "Mega",
+    name: "Northern Crescent",
+    tagline: "Engineering | Asset Integrity",
+    logo: "/sponsor-logos/northern-crescent.png",
+    logoWidth: 601,
+    logoHeight: 264,
+    website: "https://www.northerncrescent.ca",
+    cta: "Visit northerncrescent.ca",
+    desc: "Northern Crescent is a dynamic engineering firm providing reliable design solutions. Our experienced team delivers services in three key areas: MOC and Sustaining Capital Projects, Advanced Engineering Analysis, and Asset Integrity. We look forward to helping clients address their engineering challenges and achieve their goals.",
+    color: "border-[#15803d] bg-[#15803d]/5",
+    badgeColor: "bg-[#15803d] text-white",
+  },
+  {
+    rank: 3,
+    tier: "Gold Sponsor",
+    tierName: "Gold",
+    name: "IDRF",
+    tagline: "People helping people",
+    logo: "/sponsor-logos/idrf.png",
+    logoWidth: 1274,
+    logoHeight: 451,
+    website: "https://idrf.ca/food/",
+    cta: "Visit idrf.ca",
+    desc: "IDRF (International Development and Relief Foundation) is a proud Gold sponsor of APEC. Guided by the principle of “people helping people,” IDRF supports communities in need through humanitarian relief and sustainable development programs. Their generosity helps power APEC's events and community initiatives.",
+    color: "border-[#C8A24B] bg-[#C8A24B]/5",
+    badgeColor: "bg-[#C8A24B] text-white",
+  },
   {
     rank: 5,
     tier: "Community Sponsor",
@@ -13,6 +65,7 @@ const currentSponsors = [
     phone: "403-775-6633",
     email: "2189@fastsigns.com",
     website: "https://www.fastsigns.com",
+    cta: "Visit FastSigns Calgary",
     desc: "FastSigns Downtown Calgary is a proud community sponsor of APEC. They provide high-quality signage, banners, and visual communications solutions for businesses across Calgary. Their expertise and community support make a real difference for organizations like APEC.",
     color: "border-[#4A90D9] bg-[#4A90D9]/5",
     badgeColor: "bg-[#4A90D9] text-white",
@@ -117,22 +170,43 @@ export default function SponsorsPage() {
                 <div>
                   <span className={`inline-block px-3 py-1 rounded-full text-sm font-bold ${sponsor.badgeColor} mb-3`}>{sponsor.tier}</span>
                   <h3 className="text-3xl font-bold text-[#0f1f5c]">{sponsor.name}</h3>
-                  <p className="text-[#C8A24B] font-semibold">{sponsor.tagline}</p>
+                  {!sponsor.logo && <p className="text-[#C8A24B] font-semibold">{sponsor.tagline}</p>}
                 </div>
               </div>
+              {sponsor.logo && (
+                <a
+                  href={sponsor.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex flex-col items-center gap-3 mb-6"
+                >
+                  <span className="inline-flex items-center justify-center bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+                    <Image
+                      src={sponsor.logo}
+                      alt={`${sponsor.name} logo`}
+                      width={sponsor.logoWidth ?? 300}
+                      height={sponsor.logoHeight ?? 150}
+                      className="h-16 sm:h-20 w-auto object-contain"
+                    />
+                  </span>
+                  <span className="text-[#0f1f5c] font-semibold group-hover:underline">{sponsor.tagline}</span>
+                </a>
+              )}
               <p className="text-[#4a5a52] leading-relaxed mb-6">{sponsor.desc}</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="space-y-2 text-[#4a5a52]">
-                  <p><PersonIcon /><strong>Contact:</strong> {sponsor.director}</p>
-                  <p><MapPinIcon /><strong>Address:</strong> {sponsor.address}</p>
+              {(sponsor.director || sponsor.address || sponsor.phone || sponsor.email) && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                  <div className="space-y-2 text-[#4a5a52]">
+                    {sponsor.director && <p><PersonIcon /><strong>Contact:</strong> {sponsor.director}</p>}
+                    {sponsor.address && <p><MapPinIcon /><strong>Address:</strong> {sponsor.address}</p>}
+                  </div>
+                  <div className="space-y-2 text-[#4a5a52]">
+                    {sponsor.phone && <p><PhoneIcon /><strong>Phone:</strong> <a href={`tel:${sponsor.phone}`} className="text-[#4A90D9] hover:underline">{sponsor.phone}</a></p>}
+                    {sponsor.email && <p><EnvelopeIcon /><strong>Email:</strong> <a href={`mailto:${sponsor.email}`} className="text-[#4A90D9] hover:underline">{sponsor.email}</a></p>}
+                  </div>
                 </div>
-                <div className="space-y-2 text-[#4a5a52]">
-                  <p><PhoneIcon /><strong>Phone:</strong> <a href={`tel:${sponsor.phone}`} className="text-[#4A90D9] hover:underline">{sponsor.phone}</a></p>
-                  <p><EnvelopeIcon /><strong>Email:</strong> <a href={`mailto:${sponsor.email}`} className="text-[#4A90D9] hover:underline">{sponsor.email}</a></p>
-                </div>
-              </div>
+              )}
               <div className="mt-4">
-                <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#0f1f5c] text-white font-semibold rounded-lg text-sm hover:bg-[#0a1645] transition-colors">Visit FastSigns Calgary →</a>
+                <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="inline-block px-5 py-2 bg-[#0f1f5c] text-white font-semibold rounded-lg text-sm hover:bg-[#0a1645] transition-colors">{sponsor.cta ?? `Visit ${sponsor.name}`} →</a>
               </div>
             </div>
           ))}
