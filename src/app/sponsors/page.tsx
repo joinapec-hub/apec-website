@@ -187,6 +187,7 @@ export default function SponsorsPage() {
                       width={sponsor.logoWidth ?? 300}
                       height={sponsor.logoHeight ?? 150}
                       className="h-16 sm:h-20 w-auto object-contain"
+                      unoptimized
                     />
                   </span>
                   <span className="text-[#0f1f5c] font-semibold group-hover:underline">{sponsor.tagline}</span>
