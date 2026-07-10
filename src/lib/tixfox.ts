@@ -70,8 +70,7 @@ export const FALLBACK_EVENTS: TixFoxEvent[] = [
     venue_name: "Fish Creek Provincial Park",
     locality: "Calgary",
     region: "AB",
-    event_image:
-      "https://cdn.tixfox.co/event_images/awvisQL1Bk5v9ql6SFj4WbqqqSAQGZCJCDZFpFrB.jpg",
+    event_image: "/events/apec-bbq-aug-2026.jpg",
     status: 2,
   },
 ];
