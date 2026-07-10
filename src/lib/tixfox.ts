@@ -58,7 +58,7 @@ export function eventUrl(ev: TixFoxEvent): string {
 export const FALLBACK_EVENTS: TixFoxEvent[] = [
   {
     title: "APEC Annual BBQ 2026",
-    slug: "2jQa9HkAwq",
+    slug: "dHH6yqPoKL",
     custom_slug: null,
     description:
       "<p>Join us for APEC's annual summer BBQ — a beloved community tradition bringing together engineers, professionals, and families for food, fun, and great conversation. All members and guests are welcome.</p>",
