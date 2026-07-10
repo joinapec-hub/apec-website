@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 // Fallback ticket link used only when the TixFox API is unavailable.
-const FALLBACK_TICKETS = "https://tixfox.co/e/2jQa9HkAwq";
+const FALLBACK_TICKETS = "https://tixfox.co/e/dHH6yqPoKL";
 
 function TicketIcon() {
   return (
