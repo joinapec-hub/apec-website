@@ -100,6 +100,8 @@ const jsonLd = {
         addressCountry: "CA",
       },
       sameAs: [
+        "https://www.facebook.com/share/1BQ9gMnjL9/",
+        "https://www.instagram.com/apecanada.ca",
         "https://www.facebook.com/groups/781259795220477/",
         "https://chat.whatsapp.com/Ju7iSnLwYniA8dTZnKbrIJ",
       ],
