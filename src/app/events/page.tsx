@@ -7,6 +7,7 @@ import {
   formatEventLocation,
   plainDescription,
   FALLBACK_EVENTS,
+  withoutPastEvents,
   type TixFoxEvent,
 } from "@/lib/tixfox";
 import { STRIPE_LINKS } from "@/lib/payments";
@@ -23,8 +24,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/events" },
 };
 
-// Fallback ticket link used only when the TixFox API is unavailable.
-const FALLBACK_TICKETS = "https://tixfox.co/e/dHH6yqPoKL";
+const FACEBOOK_GROUP = "https://www.facebook.com/groups/781259795220477/";
 
 function TicketIcon() {
   return (
@@ -133,25 +133,38 @@ function NoEvents() {
       <p className="text-[#4a5a52] mb-6">
         We&apos;re planning our next event. Check back soon, or follow us on Facebook for announcements.
       </p>
-      <a
-        href={FALLBACK_TICKETS}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors"
-      >
-        <TicketIcon /> View Tickets
-      </a>
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <a
+          href={FACEBOOK_GROUP}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors"
+        >
+          Follow Us on Facebook →
+        </a>
+        <Link
+          href="/gallery"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#0f1f5c] text-white font-bold rounded-lg hover:bg-[#0a1645] transition-colors"
+        >
+          See Past Event Photos →
+        </Link>
+      </div>
     </div>
   );
 }
 
 export default async function EventsPage() {
   const { upcoming, live, configured, ok } = await getTixFoxEvents();
+  // `getTixFoxEvents` has already dropped anything whose date has passed, so
+  // only events still ahead of us reach the page.
   const liveEvents = [...live, ...upcoming];
   // If TixFox can't be reached (no API key configured yet, or the request
-  // failed), fall back to the known event so the page is never blank.
+  // failed), fall back to the known event — but only while it is still
+  // upcoming, so the fallback never resurrects a finished event.
   const events =
-    liveEvents.length === 0 && (!configured || !ok) ? FALLBACK_EVENTS : liveEvents;
+    liveEvents.length === 0 && (!configured || !ok)
+      ? withoutPastEvents(FALLBACK_EVENTS)
+      : liveEvents;
 
   // Event structured data (schema.org) for search + AI answer engines.
   const eventsJsonLd = events.map((ev) => ({
@@ -203,9 +216,12 @@ export default async function EventsPage() {
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">Events &amp; Programs</h1>
           <p className="text-xl text-gray-300">Stay connected. Keep growing. Make an impact.</p>
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <a href={events[0] ? eventUrl(events[0]) : FALLBACK_TICKETS} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
-              <TicketIcon /> Buy Tickets
-            </a>
+            {/* Only linked while an event is actually on sale — never to one that has passed. */}
+            {events[0] ? (
+              <a href={eventUrl(events[0])} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
+                <TicketIcon /> Buy Tickets
+              </a>
+            ) : null}
             <a href={STRIPE_LINKS.donation} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-bold rounded-lg hover:bg-[#3a7bc8] transition-colors">
               <HeartIcon /> Donate / Support Us
             </a>
@@ -230,7 +246,7 @@ export default async function EventsPage() {
 
           <p className="mt-8 text-center text-[#4a5a52] text-sm">
             More events coming soon. Follow us on{" "}
-            <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline font-medium">Facebook</a>{" "}
+            <a href={FACEBOOK_GROUP} target="_blank" rel="noopener noreferrer" className="text-[#4A90D9] hover:underline font-medium">Facebook</a>{" "}
             for announcements.
           </p>
         </div>
@@ -245,7 +261,7 @@ export default async function EventsPage() {
             <Link href="/gallery" className="inline-flex items-center gap-2 px-6 py-3 bg-[#0f1f5c] text-white font-semibold rounded-lg hover:bg-[#0a1645] transition-colors">
               View Photo Gallery →
             </Link>
-            <a href="https://www.facebook.com/groups/781259795220477/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-semibold rounded-lg hover:bg-[#3a7bc8] transition-colors">
+            <a href={FACEBOOK_GROUP} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#4A90D9] text-white font-semibold rounded-lg hover:bg-[#3a7bc8] transition-colors">
               Visit Our Facebook Group →
             </a>
           </div>

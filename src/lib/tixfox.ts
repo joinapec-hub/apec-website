@@ -52,9 +52,36 @@ export function eventUrl(ev: TixFoxEvent): string {
   return EVENT_BASE + (ev.custom_slug || ev.slug);
 }
 
+/**
+ * True once an event is over. TixFox buckets events server-side, but an event
+ * can sit in `upcoming_events` / `live_events` long after it has finished (and
+ * the fallback event below goes stale the same way), so the date is what
+ * decides whether it belongs on the page.
+ *
+ * An event with no usable date is kept — "date to be announced" is a real
+ * upcoming state, not a past one.
+ */
+export function hasEnded(ev: TixFoxEvent, now: number = Date.now()): boolean {
+  const stamp = ev.end_time || ev.start_time;
+  if (!stamp) return false;
+  const ends = new Date(stamp).getTime();
+  if (Number.isNaN(ends)) return false;
+  return ends < now;
+}
+
+/** Drop events that are already over, keeping the original order. */
+export function withoutPastEvents(
+  events: TixFoxEvent[],
+  now: number = Date.now(),
+): TixFoxEvent[] {
+  return events.filter((ev) => !hasEnded(ev, now));
+}
+
 // Shown only when the TixFox API can't be reached (e.g. TIXFOX_API_KEY not
 // set in the environment yet) so the events page is never blank. Once the
-// key is configured, live TixFox data replaces this.
+// key is configured, live TixFox data replaces this. The events page runs
+// this list through `withoutPastEvents` too, so a stale entry here shows the
+// "no upcoming events" card rather than an event that already happened.
 export const FALLBACK_EVENTS: TixFoxEvent[] = [
   {
     title: "APEC Annual BBQ 2026",
@@ -94,8 +121,8 @@ export async function getTixFoxEvents(): Promise<TixFoxData> {
     const data = (await res.json()) as EventsResponse;
     const events = data?.events ?? {};
     return {
-      upcoming: events.upcoming_events ?? [],
-      live: events.live_events ?? [],
+      upcoming: withoutPastEvents(events.upcoming_events ?? []),
+      live: withoutPastEvents(events.live_events ?? []),
       configured: true,
       ok: Boolean(data?.status),
     };
