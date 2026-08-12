@@ -1,4 +1,8 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element --
+ * next.config.ts sets `images.unoptimized`, so next/image would return the
+ * same bytes with no transform. A plain <img> is what lets the poster run at
+ * its own aspect ratio on mobile instead of being cropped to a fixed box.
+ */
 import Link from "next/link";
 import {
   getTixFoxEvents,
@@ -66,16 +70,18 @@ function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Poster */}
-        <div className="relative h-72 lg:h-auto min-h-[320px] bg-[#0f1f5c]">
+        {/* Poster.
+            Mobile stacks the card, so the image runs at its own aspect ratio —
+            the whole poster stays visible however wide or tall it is, which
+            matters because these are text-heavy designs that lose their detail
+            the moment they are cropped. From `lg` the card is two columns and
+            the poster fills its half, where cropping is fine. */}
+        <div className="relative bg-[#0f1f5c] min-h-[200px] lg:min-h-[320px]">
           {ev.event_image ? (
-            <Image
+            <img
               src={ev.event_image}
               alt={ev.title}
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              quality={85}
+              className="w-full h-auto lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-top"
             />
           ) : null}
         </div>
