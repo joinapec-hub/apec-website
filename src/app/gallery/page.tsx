@@ -1,15 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import GalleryGrid from "@/components/GalleryGrid";
-import { GALLERY_BASE, GALLERY_EVENTS } from "@/lib/gallery";
+import { GALLERY_EVENTS, ORIGINALS_BASE } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title: "Photo Gallery",
   description: "Browse photos from APEC events — galas, networking mixers, workshops, and community celebrations.",
   alternates: { canonical: "/gallery" },
 };
-
-const BLUR = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGN4//IWAAV9ArPB0Os9AAAAAElFTkSuQmCC";
 
 export default function GalleryPage() {
   return (
@@ -36,7 +34,7 @@ export default function GalleryPage() {
       </section>
 
       {/* Gallery sections (click any photo to view full size & download) */}
-      <GalleryGrid events={GALLERY_EVENTS} base={GALLERY_BASE} blur={BLUR} />
+      <GalleryGrid events={GALLERY_EVENTS} originalsBase={ORIGINALS_BASE} />
 
       {/* CTA */}
       <section className="py-16 bg-[#F2E9D2]">

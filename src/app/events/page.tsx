@@ -5,9 +5,9 @@ import {
   eventUrl,
   formatEventDate,
   formatEventLocation,
-  plainDescription,
-  FALLBACK_EVENTS,
-  withoutPastEvents,
+  formatEventPrice,
+  eventInstant,
+  summarize,
   type TixFoxEvent,
 } from "@/lib/tixfox";
 import { STRIPE_LINKS } from "@/lib/payments";
@@ -61,7 +61,8 @@ function MapPinIcon() {
 
 function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
   const url = eventUrl(ev);
-  const summary = plainDescription(ev.description);
+  const summary = summarize(ev.description);
+  const price = formatEventPrice(ev);
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -88,6 +89,14 @@ function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
               ) : (
                 <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-100 text-orange-800">Upcoming Event</span>
               )}
+              {ev.is_sold_out ? (
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700">Sold Out</span>
+              ) : price ? (
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#C8A24B]/20 text-[#8a6d24]">{price}</span>
+              ) : null}
+              {ev.is_recurring ? (
+                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800">Recurring</span>
+              ) : null}
             </div>
 
             <h3 className="text-3xl font-bold text-[#0f1f5c] mb-3">{ev.title}</h3>
@@ -115,9 +124,13 @@ function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg text-base hover:bg-[#d4aa5a] transition-colors"
+              className={`inline-flex items-center gap-2 px-7 py-3.5 font-bold rounded-lg text-base transition-colors ${
+                ev.is_sold_out
+                  ? "bg-[#0f1f5c] text-white hover:bg-[#0a1645]"
+                  : "bg-[#C8A24B] text-[#0a1645] hover:bg-[#d4aa5a]"
+              }`}
             >
-              <TicketIcon /> Get Tickets
+              <TicketIcon /> {ev.is_sold_out ? "View Event" : "Get Tickets"}
             </a>
           </div>
         </div>
@@ -154,36 +167,42 @@ function NoEvents() {
 }
 
 export default async function EventsPage() {
-  const { upcoming, live, configured, ok } = await getTixFoxEvents();
-  // `getTixFoxEvents` has already dropped anything whose date has passed, so
-  // only events still ahead of us reach the page.
-  const liveEvents = [...live, ...upcoming];
-  // If TixFox can't be reached (no API key configured yet, or the request
-  // failed), fall back to the known event — but only while it is still
-  // upcoming, so the fallback never resurrects a finished event.
-  const events =
-    liveEvents.length === 0 && (!configured || !ok)
-      ? withoutPastEvents(FALLBACK_EVENTS)
-      : liveEvents;
+  // Anything already finished has been dropped, so every event here is one
+  // that is genuinely still ahead of us. Live events lead the list.
+  const { upcoming, live } = await getTixFoxEvents();
+  const events = [...live, ...upcoming];
 
   // Event structured data (schema.org) for search + AI answer engines.
   const eventsJsonLd = events.map((ev) => ({
     "@context": "https://schema.org",
     "@type": "Event",
     name: ev.title,
-    startDate: ev.start_time || undefined,
-    endDate: ev.end_time || undefined,
+    startDate: eventInstant(ev.start_time, ev.timezone)?.toISOString(),
+    endDate: eventInstant(ev.end_time, ev.timezone)?.toISOString(),
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     image: ev.event_image ? [ev.event_image] : undefined,
-    description: plainDescription(ev.description) || undefined,
+    description: summarize(ev.description, 500) || undefined,
     url: eventUrl(ev),
     location: {
       "@type": "Place",
-      name: ev.venue_name || ev.location || undefined,
+      name: ev.venue?.name || undefined,
       address:
-        ev.address || [ev.locality, ev.region].filter(Boolean).join(", ") || undefined,
+        ev.address ||
+        [ev.venue?.locality, ev.venue?.region].filter(Boolean).join(", ") ||
+        undefined,
     },
+    offers: ev.tickets?.length
+      ? {
+          "@type": "Offer",
+          url: eventUrl(ev),
+          price: Math.min(...ev.tickets.map((t) => Number(t.price) || 0)),
+          priceCurrency: ev.currency?.code || "CAD",
+          availability: ev.is_sold_out
+            ? "https://schema.org/SoldOut"
+            : "https://schema.org/InStock",
+        }
+      : undefined,
     organizer: {
       "@type": "Organization",
       name: "APEC",
