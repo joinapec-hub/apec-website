@@ -42,34 +42,73 @@ const WITHIN_YEAR_RANK = {
   "2014/Picnic and Networking 2014": 20,
 };
 
-/** Split a name into text/number chunks so digits compare numerically. */
-function chunk(name) {
-  return name.match(/\d+|\D+/g) ?? [];
+/**
+ * Character classes, ordered the way the file explorer the photos are
+ * organised in collates them: "_" first, then the rest of the punctuation,
+ * then digits, then letters. That is what puts "45-_AAA0539.jpg" ahead of
+ * "45-1.jpg".
+ */
+function rank(ch) {
+  if (ch === "_") return 0;
+  if (ch >= "0" && ch <= "9") return 2;
+  if (/[a-z]/i.test(ch)) return 3;
+  return 1;
 }
 
 /**
- * Natural comparison, ignoring the file extension. Numeric chunks sort before
- * text chunks, which keeps "1.jpg … 97-_AAA0746.jpg" ahead of "V1.JPG" and
- * "_AAA0076.jpg".
+ * Compare two names character by character, but consume whole runs of digits
+ * and compare those as numbers, so "9" lands before "10".
+ */
+function collate(a, b) {
+  let i = 0;
+  let j = 0;
+
+  while (i < a.length && j < b.length) {
+    const isDigit = (s, at) => s[at] >= "0" && s[at] <= "9";
+
+    if (isDigit(a, i) && isDigit(b, j)) {
+      let aEnd = i;
+      let bEnd = j;
+      while (aEnd < a.length && isDigit(a, aEnd)) aEnd++;
+      while (bEnd < b.length && isDigit(b, bEnd)) bEnd++;
+      const aNum = Number(a.slice(i, aEnd));
+      const bNum = Number(b.slice(j, bEnd));
+      if (aNum !== bNum) return aNum - bNum;
+      i = aEnd;
+      j = bEnd;
+      continue;
+    }
+
+    if (rank(a[i]) !== rank(b[j])) return rank(a[i]) - rank(b[j]);
+    const aCh = a[i].toLowerCase();
+    const bCh = b[j].toLowerCase();
+    if (aCh !== bCh) return aCh < bCh ? -1 : 1;
+    i++;
+    j++;
+  }
+
+  // One name is a prefix of the other: the shorter one comes first, which is
+  // why "45.jpg" precedes "45-1.jpg" and "…PM.jpeg" precedes "…PM (1).jpeg".
+  return a.length - i - (b.length - j);
+}
+
+/** Drop the extension so the name sorts first and the extension only breaks ties. */
+function stem(file) {
+  return file.slice(0, file.length - extname(file).length);
+}
+
+/**
+ * Photos whose name starts with a number are the photographer's numbered
+ * sequence, so they lead the set in order. Anything else (the V-series, the
+ * un-numbered _AAA shots) follows behind it.
  */
 function naturalCompare(a, b) {
-  const left = chunk(a.slice(0, a.length - extname(a).length));
-  const right = chunk(b.slice(0, b.length - extname(b).length));
-
-  for (let i = 0; i < Math.min(left.length, right.length); i++) {
-    const l = left[i];
-    const r = right[i];
-    const lNum = /^\d/.test(l);
-    const rNum = /^\d/.test(r);
-    if (lNum && rNum) {
-      if (Number(l) !== Number(r)) return Number(l) - Number(r);
-    } else if (lNum !== rNum) {
-      return lNum ? -1 : 1;
-    } else if (l !== r) {
-      return l < r ? -1 : 1;
-    }
-  }
-  return left.length - right.length;
+  const left = stem(a);
+  const right = stem(b);
+  const leftNumbered = /^\d/.test(left);
+  const rightNumbered = /^\d/.test(right);
+  if (leftNumbered !== rightNumbered) return leftNumbered ? -1 : 1;
+  return collate(left, right) || collate(a, b);
 }
 
 /** Percent-encode a repo-relative path, keeping the "/" separators intact. */
