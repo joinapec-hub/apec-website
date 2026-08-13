@@ -69,19 +69,22 @@ function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
   const price = formatEventPrice(ev);
   return (
     <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      {/* `items-start` stops the grid stretching the poster cell to match the
+          text column — that stretch is what forced a crop on desktop. */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-start">
         {/* Poster.
-            Mobile stacks the card, so the image runs at its own aspect ratio —
-            the whole poster stays visible however wide or tall it is, which
-            matters because these are text-heavy designs that lose their detail
-            the moment they are cropped. From `lg` the card is two columns and
-            the poster fills its half, where cropping is fine. */}
-        <div className="relative bg-[#0f1f5c] min-h-[200px] lg:min-h-[320px]">
+            The image runs at its own aspect ratio at every width, so the whole
+            poster is always visible — never cropped, whatever shape a future
+            event uses. These are text-heavy designs (dates, phone numbers, QR
+            codes) that lose their point the moment an edge is cut off.
+            `object-contain` only comes into play if an unusually tall poster
+            hits the max height, and it scales rather than crops. */}
+        <div className="relative bg-[#0f1f5c] min-h-[160px]">
           {ev.event_image ? (
             <img
               src={ev.event_image}
               alt={ev.title}
-              className="w-full h-auto lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-top"
+              className="w-full h-auto max-h-[80vh] object-contain"
             />
           ) : null}
         </div>
