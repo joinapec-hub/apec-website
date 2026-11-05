@@ -65,86 +65,90 @@ function MapPinIcon() {
 
 function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
   const url = eventUrl(ev);
-  const summary = summarize(ev.description);
+  // The details run full width under the poster, so there is room for more of
+  // the description than the old side-by-side layout allowed.
+  const summary = summarize(ev.description, 360);
   const price = formatEventPrice(ev);
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-      {/* `items-start` stops the grid stretching the poster cell to match the
-          text column — that stretch is what forced a crop on desktop. */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-start">
-        {/* Poster.
-            The image runs at its own aspect ratio at every width, so the whole
-            poster is always visible — never cropped, whatever shape a future
-            event uses. These are text-heavy designs (dates, phone numbers, QR
-            codes) that lose their point the moment an edge is cut off.
-            `object-contain` only comes into play if an unusually tall poster
-            hits the max height, and it scales rather than crops. */}
-        <div className="relative bg-[#0f1f5c] min-h-[160px]">
-          {ev.event_image ? (
-            <img
-              src={ev.event_image}
-              alt={ev.title}
-              className="w-full h-auto max-h-[80vh] object-contain"
-            />
+    <article className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+      {/* Poster, full card width, above the title.
+          TixFox posters are now landscape banners, so giving them the whole
+          width is what keeps their small print (dates, phone numbers, sponsor
+          logos) readable, especially on a phone. The image keeps its own
+          aspect ratio and is never cropped. If a future poster is portrait,
+          the max height stops it towering over the page and `object-contain`
+          centres it on the navy band instead of cutting an edge off.
+          Tapping it opens the event page on TixFox. */}
+      {ev.event_image ? (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-[#0f1f5c]"
+          aria-label={`${ev.title}: view event details and tickets`}
+        >
+          <img
+            src={ev.event_image}
+            alt={`${ev.title} event poster`}
+            className="block w-full h-auto max-h-[75vh] object-contain mx-auto"
+          />
+        </a>
+      ) : null}
+
+      {/* Details */}
+      <div className="p-6 sm:p-8 lg:p-10">
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          {live ? (
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-800">Happening Now</span>
+          ) : (
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-100 text-orange-800">Upcoming Event</span>
+          )}
+          {ev.is_sold_out ? (
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700">Sold Out</span>
+          ) : price ? (
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#C8A24B]/20 text-[#8a6d24]">{price}</span>
+          ) : null}
+          {ev.is_recurring ? (
+            <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800">Recurring</span>
           ) : null}
         </div>
 
-        {/* Details */}
-        <div className="p-8 flex flex-col justify-between">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-4">
-              {live ? (
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-red-100 text-red-800">Happening Now</span>
-              ) : (
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-100 text-orange-800">Upcoming Event</span>
-              )}
-              {ev.is_sold_out ? (
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-700">Sold Out</span>
-              ) : price ? (
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[#C8A24B]/20 text-[#8a6d24]">{price}</span>
-              ) : null}
-              {ev.is_recurring ? (
-                <span className="text-xs font-semibold px-3 py-1 rounded-full bg-blue-100 text-blue-800">Recurring</span>
-              ) : null}
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0f1f5c] leading-tight mb-6">{ev.title}</h3>
+
+        {/* Date and location sit side by side on wider screens, stacked on phones. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-[#4a5a52] text-sm mb-6">
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
+              <CalendarIcon />
             </div>
-
-            <h3 className="text-3xl font-bold text-[#0f1f5c] mb-3">{ev.title}</h3>
-
-            <div className="space-y-3 text-[#4a5a52] text-sm mb-6">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
-                  <CalendarIcon />
-                </div>
-                <span className="font-medium">{formatEventDate(ev)}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
-                  <MapPinIcon />
-                </div>
-                <span className="font-medium">{formatEventLocation(ev)}</span>
-              </div>
-            </div>
-
-            {summary ? <p className="text-[#4a5a52] leading-relaxed">{summary}</p> : null}
+            <span className="font-medium pt-2">{formatEventDate(ev)}</span>
           </div>
-
-          <div className="mt-8">
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-7 py-3.5 font-bold rounded-lg text-base transition-colors ${
-                ev.is_sold_out
-                  ? "bg-[#0f1f5c] text-white hover:bg-[#0a1645]"
-                  : "bg-[#C8A24B] text-[#0a1645] hover:bg-[#d4aa5a]"
-              }`}
-            >
-              <TicketIcon /> {ev.is_sold_out ? "View Event" : "Get Tickets"}
-            </a>
+          <div className="flex items-start gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
+              <MapPinIcon />
+            </div>
+            <span className="font-medium pt-2">{formatEventLocation(ev)}</span>
           </div>
         </div>
+
+        {summary ? <p className="text-[#4a5a52] leading-relaxed max-w-3xl line-clamp-5 sm:line-clamp-none">{summary}</p> : null}
+
+        <div className="mt-8">
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex w-full sm:w-auto justify-center items-center gap-2 px-7 py-3.5 font-bold rounded-lg text-base transition-colors ${
+              ev.is_sold_out
+                ? "bg-[#0f1f5c] text-white hover:bg-[#0a1645]"
+                : "bg-[#C8A24B] text-[#0a1645] hover:bg-[#d4aa5a]"
+            }`}
+          >
+            <TicketIcon /> {ev.is_sold_out ? "View Event" : "Get Tickets"}
+          </a>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -259,7 +263,7 @@ export default async function EventsPage() {
 
       {/* Upcoming Events */}
       <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-[#0f1f5c] mb-10">Upcoming Events</h2>
 
           {events.length > 0 ? (
