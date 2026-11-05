@@ -8,7 +8,8 @@ import {
   getTixFoxEvents,
   eventUrl,
   formatEventDate,
-  formatEventLocation,
+  eventLocationParts,
+  eventMapsUrl,
   formatEventPrice,
   eventInstant,
   summarize,
@@ -60,6 +61,40 @@ function MapPinIcon() {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
     </svg>
+  );
+}
+
+/** Venue name and address, linked to Google Maps when there is an address. */
+function LocationText({ ev }: { ev: TixFoxEvent }) {
+  const { name, address } = eventLocationParts(ev);
+  const mapsUrl = eventMapsUrl(ev);
+
+  if (!name && !address) {
+    return <span className="font-medium pt-2">Location to be announced</span>;
+  }
+
+  const lines = (
+    <>
+      {name ? <span className="block font-semibold text-[#0f1f5c]">{name}</span> : null}
+      {address ? <span className="block">{address}</span> : null}
+    </>
+  );
+
+  if (!mapsUrl) return <span className="pt-2">{lines}</span>;
+
+  return (
+    <a
+      href={mapsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group pt-2 hover:text-[#0f1f5c]"
+      aria-label={`Open ${name ?? address} in Google Maps`}
+    >
+      {lines}
+      <span className="mt-1 inline-flex items-center gap-1 text-[#4A90D9] font-semibold group-hover:underline">
+        Open in Google Maps →
+      </span>
+    </a>
   );
 }
 
@@ -127,7 +162,7 @@ function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
             <div className="w-9 h-9 rounded-lg bg-[#0f1f5c]/10 flex items-center justify-center text-[#0f1f5c] flex-shrink-0">
               <MapPinIcon />
             </div>
-            <span className="font-medium pt-2">{formatEventLocation(ev)}</span>
+            <LocationText ev={ev} />
           </div>
         </div>
 

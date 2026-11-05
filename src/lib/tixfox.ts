@@ -240,15 +240,61 @@ export function formatEventDate(ev: TixFoxEvent): string {
   }
 }
 
-/** Human-readable location line built from the event's venue / address fields. */
+/**
+ * The event's venue name and street address as separate lines.
+ *
+ * TixFox's `address` field often already starts with the venue name
+ * ("Qamaria Yemeni Coffee Beacon Hill, 12024 Sarcee Trl NW ..."), so the name
+ * is stripped from the front of the address to avoid printing it twice.
+ */
+export function eventLocationParts(ev: TixFoxEvent): { name: string | null; address: string | null } {
+  const name = ev.venue?.name?.trim() || null;
+  let address = ev.address?.trim() || null;
+
+  if (name && address) {
+    if (address.toLowerCase() === name.toLowerCase()) {
+      address = null;
+    } else if (address.toLowerCase().startsWith(name.toLowerCase())) {
+      address = address.slice(name.length).replace(/^[\s,\u2014-]+/, "").trim() || null;
+    }
+  }
+
+  if (!address && ev.venue) {
+    const built = [
+      ev.venue.street_address,
+      ev.venue.locality,
+      [ev.venue.region, ev.venue.postal_code].filter(Boolean).join(" "),
+      ev.venue.country,
+    ]
+      .map((part) => part?.trim())
+      .filter(Boolean)
+      .join(", ");
+    address = built || null;
+  }
+
+  return { name, address };
+}
+
+/** Human-readable one-line location, used where a single string is needed. */
 export function formatEventLocation(ev: TixFoxEvent): string {
-  const venueName = ev.venue?.name || null;
-  const parts = [venueName, ev.address && ev.address !== venueName ? ev.address : null];
-  const line = parts.filter(Boolean).join(" — ");
+  const { name, address } = eventLocationParts(ev);
+  const line = [name, address].filter(Boolean).join(", ");
   if (line) return line;
 
   const cityRegion = [ev.venue?.locality, ev.venue?.region].filter(Boolean).join(", ");
   return cityRegion || "Location to be announced";
+}
+
+/**
+ * Google Maps search link for the venue, or null when there is nothing
+ * specific enough to search for. Searching on the venue name plus the full
+ * address lands on the business listing rather than just the street.
+ */
+export function eventMapsUrl(ev: TixFoxEvent): string | null {
+  const { name, address } = eventLocationParts(ev);
+  if (!address) return null;
+  const query = [name, address].filter(Boolean).join(", ");
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
 /**
