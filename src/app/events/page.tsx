@@ -4,6 +4,7 @@
  * its own aspect ratio on mobile instead of being cropped to a fixed box.
  */
 import Link from "next/link";
+import Script from "next/script";
 import {
   getTixFoxEvents,
   eventUrl,
@@ -169,10 +170,14 @@ function EventCard({ ev, live }: { ev: TixFoxEvent; live?: boolean }) {
         {summary ? <p className="text-[#4a5a52] leading-relaxed max-w-3xl line-clamp-5 sm:line-clamp-none">{summary}</p> : null}
 
         <div className="mt-8">
+          {/* With TixFox's embed script loaded, this opens checkout in a popup
+              on our page. Without it, the link opens the TixFox event page. */}
           <a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
+            data-tixfox="modal"
+            data-tixfox-event={ev.slug}
             className={`inline-flex w-full sm:w-auto justify-center items-center gap-2 px-7 py-3.5 font-bold rounded-lg text-base transition-colors ${
               ev.is_sold_out
                 ? "bg-[#0f1f5c] text-white hover:bg-[#0a1645]"
@@ -260,6 +265,10 @@ export default async function EventsPage() {
 
   return (
     <>
+      {/* TixFox embed: any link marked data-tixfox="modal" opens the event's
+          checkout in a popup on this page instead of sending people to TixFox. */}
+      {events.length > 0 && <Script src="https://tixfox.co/embed.js" strategy="afterInteractive" />}
+
       {eventsJsonLd.length > 0 && (
         <script
           type="application/ld+json"
@@ -285,7 +294,7 @@ export default async function EventsPage() {
           <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             {/* Only linked while an event is actually on sale — never to one that has passed. */}
             {events[0] ? (
-              <a href={eventUrl(events[0])} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
+              <a href={eventUrl(events[0])} target="_blank" rel="noopener noreferrer" data-tixfox="modal" data-tixfox-event={events[0].slug} className="inline-flex items-center gap-2 px-6 py-3 bg-[#C8A24B] text-[#0a1645] font-bold rounded-lg hover:bg-[#d4aa5a] transition-colors">
                 <TicketIcon /> Buy Tickets
               </a>
             ) : null}
