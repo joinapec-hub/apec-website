@@ -70,6 +70,23 @@ const currentSponsors: Sponsor[] = [
     color: "border-[#94A3B8] bg-[#94A3B8]/5",
     badgeColor: "bg-[#94A3B8] text-white",
   },
+  {
+    rank: 6,
+    tier: "General Sponsor",
+    tierName: "General",
+    name: "Mirchi Pakistani Fine Dining",
+    tagline: "Pakistani Fine Dining",
+    logo: "/sponsor-logos/mirchi.png",
+    logoWidth: 331,
+    logoHeight: 158,
+    address: "76 Westwinds Crescent NE, Calgary, AB, T3J 5H5",
+    phone: "+1 (587) 623-7585",
+    website: "https://mirchicalgary.com",
+    cta: "Visit Mirchi Calgary",
+    desc: "Mirchi Pakistani Fine Dining is a proud general sponsor of APEC. The Calgary restaurant serves authentic Pakistani cuisine in Westwinds, NE Calgary. Their generosity and community support help make APEC's events possible.",
+    color: "border-[#94A3B8] bg-[#94A3B8]/5",
+    badgeColor: "bg-[#94A3B8] text-white",
+  },
 ];
 
 // Sponsorship tiers (per event). Mega is the premier tier and takes the
@@ -201,7 +218,7 @@ export default function SponsorsPage() {
                     {sponsor.address && <p><MapPinIcon /><strong>Address:</strong> {sponsor.address}</p>}
                   </div>
                   <div className="space-y-2 text-[#4a5a52]">
-                    {sponsor.phone && <p><PhoneIcon /><strong>Phone:</strong> <a href={`tel:${sponsor.phone}`} className="text-[#4A90D9] hover:underline">{sponsor.phone}</a></p>}
+                    {sponsor.phone && <p><PhoneIcon /><strong>Phone:</strong> <a href={`tel:${sponsor.phone.replace(/[^\d+]/g, "")}`} className="text-[#4A90D9] hover:underline">{sponsor.phone}</a></p>}
                     {sponsor.email && <p><EnvelopeIcon /><strong>Email:</strong> <a href={`mailto:${sponsor.email}`} className="text-[#4A90D9] hover:underline">{sponsor.email}</a></p>}
                   </div>
                 </div>
